@@ -1,0 +1,2 @@
+rootProject.name='TextInputLayout'
+include ':app'
