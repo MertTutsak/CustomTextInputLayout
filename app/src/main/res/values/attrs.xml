@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CustomTextInputlayout">
+        <attr name="cti_startIcon" format="reference" />
+        <attr name="cti_endIcon" format="reference" />
+        <attr name="cti_bottomLine" format="boolean" />
+        <attr name="cti_hintAnimation" format="boolean" />
+        <attr name="cti_hint" format="string" />
+        <attr name="cti_text" format="string" />
+    </declare-styleable>
+
+</resources>
