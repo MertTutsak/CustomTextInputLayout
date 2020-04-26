@@ -1,7 +1,7 @@
 # CustomTextInputLayout
 
 ### TO DO
-  - [ ] Animate textview add as addview
+  - [ ] Animate textview add by addview function
   - [x] Start and End icon attr add
   - [ ] Start and End icon add to view
   - [ ] Start and End icon click listener
