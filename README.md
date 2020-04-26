@@ -6,4 +6,8 @@
   - [ ] Start and End icon add to view
   - [ ] Start and End icon click listener
   - [ ] Default/Error/Warning/Sucess states add
-  - [ ] Remove Button added
+  - [ ] Empty/Remove icon added
+  - [ ] Add getEditext function
+  - [ ] Add getHint function
+  - [ ] Add setInputType and ImeOptions
+  - [ ] Set for email and password specifici nput
