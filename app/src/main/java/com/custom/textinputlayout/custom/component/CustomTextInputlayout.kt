@@ -1,6 +1,5 @@
 package com.custom.textinputlayout.custom.component
 
-import android.animation.*
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
@@ -18,10 +17,8 @@ import java.lang.Exception
 
 class CustomTextInputlayout : LinearLayout {
 
-    val showAnimator = AnimatorSet()
-    val hideAnimator = AnimatorSet()
-
     var attr = AttributeData()
+    lateinit var hintAnimator: HintAnimator
 
     constructor(context: Context) : super(context) {
         init(context, null)
@@ -57,6 +54,7 @@ class CustomTextInputlayout : LinearLayout {
     }
 
     private fun initTextInputLayout() {
+        hintAnimator = HintAnimator(this, this.txtTitle, this.txtTitleAnimate, this.edtInput)
         this.onTouch {
             if (!it) {
                 this.edtInput.focus()
@@ -78,8 +76,10 @@ class CustomTextInputlayout : LinearLayout {
             this.txtTitle.typeface = ResourcesCompat.getFont(context, attr.hintFontFamily)
             this.txtTitleAnimate.typeface = ResourcesCompat.getFont(context, attr.hintFontFamily)
         }
-        this.txtTitle.text = attr.hint ?: ""
-        this.txtTitleAnimate.text = attr.hint ?: ""
+        (attr.hint ?: "").let {
+            this.txtTitle.text = it
+            this.txtTitleAnimate.text = it
+        }
     }
 
     private fun initEdittext() {
@@ -100,9 +100,8 @@ class CustomTextInputlayout : LinearLayout {
         }
 
         this.edtInput.onTextChanged { charSequence, i, i2, i3 ->
-            attr.text = charSequence.toString()
-            startHintAnimation()
-            setCounter()
+            hintAnimator.showIf(!charSequence.isNullOrEmpty())
+            setCounter((charSequence ?: "").length)
         }
 
         attr.text.notNull { this.edtInput.setText(it) }
@@ -114,154 +113,15 @@ class CustomTextInputlayout : LinearLayout {
 
     private fun initCounter() {
         if (attr.textMaxLength == -1 && attr.hasCounter) {
-            throw Exception("max length must not be null")
+            throw Exception("max length of edittext must not be null")
         } else {
             txtCounter.visibleIf(attr.hasCounter)
-            setCounter()
+            setCounter(this.edtInput.text.length)
         }
     }
 
-    private fun setCounter() {
-        txtCounter.text = "${attr.text?.length ?: 0}/${attr.textMaxLength}"
-    }
-
-    private fun startHintAnimation() {
-        if (!attr.text.isNullOrEmpty()) {
-            hintShowAnimation()
-        } else {
-            hintHideAnimation()
-        }
-    }
-
-    private fun hintShowAnimation() {
-        if (this.txtTitleAnimate.visibility == View.GONE) {
-            val startY: Float = this.edtInput.y
-            val endY: Float = this.txtTitle.y
-            val translateY = ObjectAnimator.ofFloat(
-                this.txtTitleAnimate, "translationY",
-                startY,
-                endY
-            )
-
-            val startX: Float = this.edtInput.x
-            val endX: Float = this.txtTitle.x
-            val translateX = ObjectAnimator.ofFloat(
-                this.txtTitleAnimate, "translationX",
-                startX,
-                endX
-            )
-
-            val startSize: Float = this.context.px2sp(this.edtInput.textSize.toInt())
-            val endSize: Float = this.context.px2sp(this.txtTitle.textSize.toInt())
-            val size = ValueAnimator.ofFloat(
-                startSize,
-                endSize
-            )
-            size.addUpdateListener {
-                this.txtTitleAnimate.textSize = (it.animatedValue as Float)
-            }
-
-            val startColor: Int = this.edtInput.currentHintTextColor
-            val endColor: Int = this.txtTitle.currentTextColor
-            val color = ValueAnimator()
-            color.setIntValues(startColor, endColor);
-            color.setEvaluator(ArgbEvaluator())
-            color.addUpdateListener {
-                this.txtTitleAnimate.setTextColor(it.animatedValue as Int)
-            }
-
-            showAnimator.duration = 300
-            showAnimator.addListener(
-                object : Animator.AnimatorListener {
-                    override fun onAnimationRepeat(animation: Animator?) {
-                    }
-
-                    override fun onAnimationEnd(animation: Animator?) {
-                        //Reset position
-                        this@CustomTextInputlayout.edtInput.hint = ""
-                    }
-
-                    override fun onAnimationCancel(animation: Animator?) {
-
-                    }
-
-                    override fun onAnimationStart(animation: Animator?) {
-                        this@CustomTextInputlayout.txtTitleAnimate.visible()
-                    }
-                }
-            )
-            showAnimator.playTogether(translateX, translateY, size, color)
-            showAnimator.start()
-        }
-    }
-
-    private fun hintHideAnimation() {
-        if (this.txtTitleAnimate.visibility != View.GONE) {
-            val startY: Float = this.txtTitle.y
-            val endY: Float = this.edtInput.y
-            val translateY = ObjectAnimator.ofFloat(
-                this.txtTitleAnimate, "translationY",
-                startY,
-                endY
-            )
-
-            val startX: Float = this.txtTitle.x
-            val endX: Float = this.edtInput.x
-            val translateX = ObjectAnimator.ofFloat(
-                this.txtTitleAnimate, "translationX",
-                startX,
-                endX
-            )
-
-            val startSize: Float = this.context.px2sp(this.txtTitle.textSize.toInt())
-            val endSize: Float = this.context.px2sp(this.edtInput.textSize.toInt())
-            val size = ValueAnimator.ofFloat(
-                startSize,
-                endSize
-            )
-            size.addUpdateListener {
-                this.txtTitleAnimate.textSize = (it.animatedValue as Float)
-            }
-
-            val startColor: Int = this.txtTitle.currentTextColor
-            val endColor: Int = this.edtInput.currentHintTextColor
-            val color = ValueAnimator()
-            color.setIntValues(startColor, endColor);
-            color.setEvaluator(ArgbEvaluator())
-            color.addUpdateListener {
-                this.txtTitleAnimate.setTextColor(it.animatedValue as Int)
-            }
-
-            hideAnimator.duration = 300
-            hideAnimator.addListener(
-                object : Animator.AnimatorListener {
-                    override fun onAnimationRepeat(animation: Animator?) {
-                    }
-
-                    override fun onAnimationEnd(animation: Animator?) {
-                        this@CustomTextInputlayout.edtInput.hint =
-                            this@CustomTextInputlayout.txtTitle.text
-                        //Reset position
-                        this@CustomTextInputlayout.txtTitleAnimate.gone()
-                        this@CustomTextInputlayout.txtTitleAnimate.run {
-                            translationX = 0f
-                            translationY = 0f
-                            textSize = startSize
-                            setTextColor(startColor)
-                        }
-                    }
-
-                    override fun onAnimationCancel(animation: Animator?) {
-
-                    }
-
-                    override fun onAnimationStart(animation: Animator?) {
-                    }
-                }
-            )
-            hideAnimator.playTogether(translateX, translateY, size, color)
-            hideAnimator.start()
-        }
+    fun setCounter(length: Int) {
+        txtCounter.text = "$length/${attr.textMaxLength}"
     }
 
 }
