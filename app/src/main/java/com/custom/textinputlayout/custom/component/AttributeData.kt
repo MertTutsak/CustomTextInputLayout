@@ -2,12 +2,11 @@ package com.custom.textinputlayout.custom.component
 
 import android.content.res.TypedArray
 import com.custom.textinputlayout.R
-import com.custom.textinputlayout.extension.isNull
-import java.util.jar.Attributes
 
 /**
  *   Created by mertttutsak on 26.04.2020.
  */
+
 data class AttributeData(
     var startIcon: Int = -1,
     var endIcon: Int = -1,

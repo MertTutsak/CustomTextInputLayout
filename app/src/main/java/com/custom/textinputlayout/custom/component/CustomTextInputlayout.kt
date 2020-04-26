@@ -10,7 +10,6 @@ import com.custom.textinputlayout.extension.*
 import kotlinx.android.synthetic.main.component_textinputlayout.view.*
 import java.lang.Exception
 
-
 /**
  *   Created by mertttutsak on 25.04.2020.
  */
