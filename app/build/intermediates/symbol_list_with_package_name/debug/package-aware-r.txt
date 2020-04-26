@@ -868,6 +868,7 @@ id top
 id topPanel
 id txtCounter
 id txtTitle
+id txtTitleAnimate
 id unchecked
 id uniform
 id up

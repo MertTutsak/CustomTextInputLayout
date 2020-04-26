@@ -1,7 +1,6 @@
 package com.custom.textinputlayout.custom.component
 
-import android.animation.Animator
-import android.animation.AnimatorSet
+import android.animation.*
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
@@ -11,8 +10,6 @@ import com.custom.textinputlayout.R
 import com.custom.textinputlayout.extension.*
 import kotlinx.android.synthetic.main.component_textinputlayout.view.*
 import java.lang.Exception
-import android.animation.ObjectAnimator
-import android.animation.ValueAnimator
 
 
 /**
@@ -147,18 +144,19 @@ class CustomTextInputlayout : LinearLayout {
     private fun initHint() {
         if (hintSize != -1) {
             this.txtTitle.textSize = this.context.sp(hintSize).toFloat()
+            this.txtTitleAnimate.textSize = this.context.sp(hintSize).toFloat()
         }
         if (hintColor != -1) {
             this.edtInput.setHintTextColor(this.context.resColor(hintColor))
             this.txtTitle.setTextColor(this.context.resColor(hintColor))
+            this.txtTitleAnimate.setTextColor(this.context.resColor(hintColor))
         }
         if (hintFontFamily != -1) {
             this.txtTitle.typeface = ResourcesCompat.getFont(context, hintFontFamily)
+            this.txtTitleAnimate.typeface = ResourcesCompat.getFont(context, hintFontFamily)
         }
-        this.txtTitle.postOnAnimation {
-            this.txtTitle.animation
-        }
-        this.txtTitle.text = hint
+        this.txtTitle.text = hint?:""
+        this.txtTitleAnimate.text = hint?:""
         setHint()
     }
 
@@ -215,38 +213,43 @@ class CustomTextInputlayout : LinearLayout {
     }
 
     private fun hintShowAnimation() {
-        if (this.txtTitle.visibility == View.INVISIBLE) {
+        if (this.txtTitleAnimate.visibility == View.INVISIBLE) {
             val startY: Float = this.edtInput.y
             val endY: Float = this.txtTitle.y
-
-            val startX: Float = this.edtInput.x
-            val endX: Float = this.txtTitle.x
-
-            val startSize: Float = this.context.px2sp(this.edtInput.textSize.toInt())
-            val endSize: Float = this.context.px2sp(this.txtTitle.textSize.toInt())
-
-            val translateX = ObjectAnimator.ofFloat(
-                this.txtTitle, "translationX",
-                startX,
-                endX
-            )
-
             val translateY = ObjectAnimator.ofFloat(
-                this.txtTitle, "translationY",
+                this.txtTitleAnimate, "translationY",
                 startY,
                 endY
             )
 
+            val startX: Float = this.edtInput.x
+            val endX: Float = this.txtTitle.x
+            val translateX = ObjectAnimator.ofFloat(
+                this.txtTitleAnimate, "translationX",
+                startX,
+                endX
+            )
+
+            val startSize: Float = this.context.px2sp(this.edtInput.textSize.toInt())
+            val endSize: Float = this.context.px2sp(this.txtTitle.textSize.toInt())
             val size = ValueAnimator.ofFloat(
                 startSize,
                 endSize
             )
-
             size.addUpdateListener {
-                this.txtTitle.setTextSize((it.animatedValue as Float))
+                this.txtTitleAnimate.textSize = (it.animatedValue as Float)
             }
 
-            showAnimator.setDuration(300)
+            val startColor: Int = this.edtInput.currentHintTextColor
+            val endColor: Int = this.txtTitle.currentTextColor
+            val color = ValueAnimator()
+            color.setIntValues(startColor, endColor);
+            color.setEvaluator(ArgbEvaluator())
+            color.addUpdateListener {
+                this.txtTitleAnimate.setTextColor(it.animatedValue as Int)
+            }
+
+            showAnimator.duration = 300
             showAnimator.addListener(
                 object : Animator.AnimatorListener {
                     override fun onAnimationRepeat(animation: Animator?) {
@@ -255,9 +258,6 @@ class CustomTextInputlayout : LinearLayout {
                     override fun onAnimationEnd(animation: Animator?) {
                         //Reset position
                         this@CustomTextInputlayout.edtInput.hint = ""
-                        this@CustomTextInputlayout.txtTitle.run {
-                            alpha = 1f
-                        }
                     }
 
                     override fun onAnimationCancel(animation: Animator?) {
@@ -265,46 +265,53 @@ class CustomTextInputlayout : LinearLayout {
                     }
 
                     override fun onAnimationStart(animation: Animator?) {
-                        this@CustomTextInputlayout.txtTitle.visible()
+                        this@CustomTextInputlayout.txtTitleAnimate.visible()
                     }
                 }
             )
-            showAnimator.playTogether(translateX, translateY, size)
+            showAnimator.playTogether(translateX, translateY, size,color)
             showAnimator.start()
         }
     }
 
     private fun hintHideAnimation() {
-        if (this.txtTitle.visibility != View.INVISIBLE) {
+        if (this.txtTitleAnimate.visibility != View.INVISIBLE) {
             val startY: Float = this.txtTitle.y
             val endY: Float = this.edtInput.y
-            val startX: Float = this.txtTitle.x
-            val endX: Float = this.edtInput.x
-
-            val startSize: Float = this.context.px2sp(this.txtTitle.textSize.toInt())
-            val endSize: Float = this.context.px2sp(this.edtInput.textSize.toInt())
-
-            val translateX = ObjectAnimator.ofFloat(
-                this.txtTitle, "translationX",
-                startX,
-                endX
-            )
-
             val translateY = ObjectAnimator.ofFloat(
-                this.txtTitle, "translationY",
+                this.txtTitleAnimate, "translationY",
                 startY,
                 endY
             )
 
+            val startX: Float = this.txtTitle.x
+            val endX: Float = this.edtInput.x
+            val translateX = ObjectAnimator.ofFloat(
+                this.txtTitleAnimate, "translationX",
+                startX,
+                endX
+            )
+
+            val startSize: Float = this.context.px2sp(this.txtTitle.textSize.toInt())
+            val endSize: Float = this.context.px2sp(this.edtInput.textSize.toInt())
             val size = ValueAnimator.ofFloat(
                 startSize,
                 endSize
             )
             size.addUpdateListener {
-                this.txtTitle.setTextSize((it.animatedValue as Float))
+                this.txtTitleAnimate.textSize = (it.animatedValue as Float)
             }
 
-            hideAnimator.setDuration(300)
+            val startColor: Int =  this.txtTitle.currentTextColor
+            val endColor: Int =this.edtInput.currentHintTextColor
+            val color = ValueAnimator()
+            color.setIntValues(startColor, endColor);
+            color.setEvaluator(ArgbEvaluator())
+            color.addUpdateListener {
+                this.txtTitleAnimate.setTextColor(it.animatedValue as Int)
+            }
+
+            hideAnimator.duration = 300
             hideAnimator.addListener(
                 object : Animator.AnimatorListener {
                     override fun onAnimationRepeat(animation: Animator?) {
@@ -314,11 +321,12 @@ class CustomTextInputlayout : LinearLayout {
                         this@CustomTextInputlayout.edtInput.hint =
                             this@CustomTextInputlayout.txtTitle.text
                         //Reset position
-                        this@CustomTextInputlayout.txtTitle.run {
-                            this.txtTitle.invisible()
+                        this@CustomTextInputlayout.txtTitleAnimate.invisible()
+                        this@CustomTextInputlayout.txtTitleAnimate.run {
                             translationX = 0f
                             translationY = 0f
                             textSize = startSize
+                            setTextColor(startColor)
                         }
                     }
 
@@ -327,11 +335,10 @@ class CustomTextInputlayout : LinearLayout {
                     }
 
                     override fun onAnimationStart(animation: Animator?) {
-
                     }
                 }
             )
-            hideAnimator.playTogether(translateX, translateY, size)
+            hideAnimator.playTogether(translateX, translateY, size,color)
             hideAnimator.start()
         }
     }

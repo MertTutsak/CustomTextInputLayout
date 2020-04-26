@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -8,19 +8,35 @@
         android:id="@+id/txtTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="2dp" />
+
+    <TextView
+        android:id="@+id/txtTitleAnimate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_marginBottom="2dp" />
 
     <EditText
         android:id="@+id/edtInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@null"
-        android:fontFamily="sans-serif" />
+        android:layout_below="@id/txtTitle"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:background="@null" />
 
     <View
         android:id="@+id/bottomLine"
         android:layout_width="wrap_content"
         android:layout_height="2dp"
+        android:layout_below="@id/edtInput"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginBottom="2dp"
         android:background="@color/colorPrimary" />
 
@@ -28,8 +44,10 @@
         android:id="@+id/txtCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/bottomLine"
+        android:layout_alignParentEnd="true"
         android:layout_gravity="end"
         android:textAlignment="textEnd"
         android:visibility="gone" />
 
-</LinearLayout>
+</RelativeLayout>
