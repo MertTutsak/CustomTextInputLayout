@@ -1,14 +1,5 @@
 package com.custom.textinputlayout.extension
 
-import android.graphics.Typeface
-import android.text.Editable
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.TextWatcher
-import android.text.style.AbsoluteSizeSpan
-import android.view.View
-import android.widget.EditText
-import com.loodos.frink.utility.utils.CustomTypefaceSpan
 import java.util.*
 import java.util.regex.Pattern
 

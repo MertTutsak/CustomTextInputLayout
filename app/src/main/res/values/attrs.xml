@@ -7,7 +7,15 @@
         <attr name="cti_bottomLine" format="boolean" />
         <attr name="cti_hintAnimation" format="boolean" />
         <attr name="cti_hint" format="string" />
+        <attr name="cti_hint_color" format="reference" />
+        <attr name="cti_hint_size" format="integer" />
+        <attr name="cti_hint_font_family" format="string" />
         <attr name="cti_text" format="string" />
+        <attr name="cti_text_color" format="reference" />
+        <attr name="cti_text_size" format="integer" />
+        <attr name="cti_text_font_family" format="string" />
+        <attr name="cti_text_max_length" format="integer" />
+        <attr name="cti_counter" format="boolean" />
     </declare-styleable>
 
 </resources>

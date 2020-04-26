@@ -4,6 +4,9 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
+import android.text.InputFilter
+import android.widget.Filter
+
 
 /**
  * this method is for text of edittext
@@ -84,6 +87,15 @@ inline fun EditText?.beforeTextChanged(crossinline beforeTextChanged: (CharSeque
         override fun afterTextChanged(editable: Editable?) {
         }
     })
+}
+
+fun EditText?.setMaxLength(length: Int) {
+    val inputFilters = arrayOf<InputFilter>(InputFilter.LengthFilter(length))
+    this?.filters?.forEach {
+        inputFilters.plus(it)
+    }
+
+    this?.filters = inputFilters
 }
 
 fun View.focus() {

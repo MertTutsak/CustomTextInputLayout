@@ -7,17 +7,29 @@
     <TextView
         android:id="@+id/txtTitle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp" />
 
     <EditText
         android:id="@+id/edtInput"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:fontFamily="sans-serif" />
 
     <View
         android:id="@+id/bottomLine"
-        android:layout_width="2dp"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="2dp"
+        android:layout_marginBottom="2dp"
         android:background="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/txtCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:textAlignment="textEnd"
+        android:visibility="gone" />
 
 </LinearLayout>
