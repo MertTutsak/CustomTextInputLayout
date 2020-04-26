@@ -10,4 +10,4 @@
   - [ ] Add getEditext function
   - [ ] Add getHint function
   - [ ] Add setInputType and ImeOptions
-  - [ ] Set for email and password specifici nput
+  - [ ] Set input for email and password specific
