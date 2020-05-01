@@ -96,22 +96,22 @@ data class AttributeData(
                 attributes.getInteger(R.styleable.CustomTextInputlayout_cti_hint_size, -1)
             hintColor =
                 attributes.getInteger(R.styleable.CustomTextInputlayout_cti_hint_color, -1)
-            hintFontFamily =
+            /*hintFontFamily =
                 attributes.getInteger(
                     R.styleable.CustomTextInputlayout_cti_hint_font_family,
                     -1
-                )
+                )*/
 
             text = attributes.getString(R.styleable.CustomTextInputlayout_cti_text)
             textSize =
                 attributes.getInteger(R.styleable.CustomTextInputlayout_cti_text_size, -1)
             textColor =
                 attributes.getInteger(R.styleable.CustomTextInputlayout_cti_text_color, -1)
-            textFontFamily =
+            /*textFontFamily =
                 attributes.getInteger(
                     R.styleable.CustomTextInputlayout_cti_text_font_family,
                     -1
-                )
+                )*/
 
             textMaxLength =
                 attributes.getInteger(
@@ -119,11 +119,11 @@ data class AttributeData(
                     -1
                 )
 
-            infoFontFamily =
+            /*infoFontFamily =
                 attributes.getInteger(
                     R.styleable.CustomTextInputlayout_cti_info_font_family,
                     -1
-                )
+                )*/
 
             isLineColorWithInfo =
                 attributes.getBoolean(

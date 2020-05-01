@@ -12,19 +12,24 @@
         app:cti_hint="Hint"
         app:cti_text="Text"
         app:cti_text_max_length="10"
-        app:cti_startIcon="@drawable/ic_warning"
-        app:cti_endIcon="@drawable/ic_warning"
+        app:cti_startIcon="@drawable/ic_input"
+        app:cti_endIcon="@drawable/ic_cancel"
         app:cti_counter="true"
+
+        app:cti_line_color_with_info="true"
 
         app:cti_default_text="@string/info_default"
         app:cti_default_color="@color/colorDefault"
 
+        app:cti_error_icon="@drawable/ic_error"
         app:cti_error_text="@string/info_error"
         app:cti_error_color="@color/colorError"
 
+        app:cti_warning_icon="@drawable/ic_warning"
         app:cti_warning_text="@string/info_warning"
         app:cti_warning_color="@color/colorWarning"
 
+        app:cti_success_icon="@drawable/ic_success"
         app:cti_success_text="@string/info_success"
         app:cti_success_color="@color/colorSuccess"
 

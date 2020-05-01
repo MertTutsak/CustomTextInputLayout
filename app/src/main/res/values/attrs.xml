@@ -15,16 +15,16 @@
         <attr name="cti_hint" format="string" />
         <attr name="cti_hint_color" format="reference" />
         <attr name="cti_hint_size" format="integer" />
-        <attr name="cti_hint_font_family" format="string" />
+        <!--<attr name="cti_hint_font_family" format="string" />-->
 
         <attr name="cti_text" format="string" />
         <attr name="cti_text_color" format="reference" />
         <attr name="cti_text_size" format="integer" />
-        <attr name="cti_text_font_family" format="string" />
+        <!--<attr name="cti_text_font_family" format="string" />-->
         <attr name="cti_text_max_length" format="integer" />
 
-        <attr name="cti_info_font_family" format="string" />
-        <attr name="cti_line_color_with_info" format="string" />
+        <!--<attr name="cti_info_font_family" format="string" />-->
+        <attr name="cti_line_color_with_info" format="boolean" />
 
         <attr name="cti_default_text" format="string" />
         <attr name="cti_default_icon" format="reference" />
