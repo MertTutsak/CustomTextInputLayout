@@ -13,7 +13,7 @@
         app:cti_text="Text"
         app:cti_text_max_length="10"
         app:cti_startIcon="@drawable/ic_warning"
-        app:cti_endIcon="@drawable/ic_info"
+        app:cti_endIcon="@drawable/ic_warning"
         app:cti_counter="true"
 
         app:cti_default_text="@string/info_default"

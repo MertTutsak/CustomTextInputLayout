@@ -693,10 +693,10 @@ int drawable btn_radio_off_mtrl 0x7f06005b
 int drawable btn_radio_off_to_on_mtrl_animation 0x7f06005c
 int drawable btn_radio_on_mtrl 0x7f06005d
 int drawable btn_radio_on_to_off_mtrl_animation 0x7f06005e
-int drawable ic_check 0x7f06005f
-int drawable ic_info 0x7f060060
-int drawable ic_launcher_background 0x7f060061
-int drawable ic_launcher_foreground 0x7f060062
+int drawable ic_error 0x7f06005f
+int drawable ic_launcher_background 0x7f060060
+int drawable ic_launcher_foreground 0x7f060061
+int drawable ic_success 0x7f060062
 int drawable ic_warning 0x7f060063
 int drawable notification_action_background 0x7f060064
 int drawable notification_bg 0x7f060065
