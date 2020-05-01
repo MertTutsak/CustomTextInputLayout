@@ -20,8 +20,8 @@ class CustomTextInputlayout : LinearLayout {
     lateinit var hintAnimator: HintAnimator
     var infoState = INFO_STATE.DEFAULT
         set(value) {
-            onInfoStateChanged.notNull {
-                it(field)
+            if (field != value && onInfoStateChanged.isNotNull()) {
+                onInfoStateChanged!!(value)
             }
             field = value
         }

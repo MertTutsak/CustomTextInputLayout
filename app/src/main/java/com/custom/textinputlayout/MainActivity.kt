@@ -25,6 +25,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         this.textInputLayout.setEndIconVisible(false)
+
+        this.textInputLayout.onInfoStateChanged {
+            Log.i("onInfoStateChanged",it.name)
+            it.ordinal
+        }
         this.textInputLayout.onTextChanged {
             this.textInputLayout.setEndIconVisible(!it.isNullOrEmpty())
 
