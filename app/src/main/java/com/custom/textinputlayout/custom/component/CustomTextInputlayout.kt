@@ -91,9 +91,9 @@ class CustomTextInputlayout : LinearLayout {
             this.txtTitleAnimate.textSize = this.context.sp(attr.hintSize).toFloat()
         }
         if (attr.hintColor != -1) {
-            this.edtInput.setHintTextColor(this.context.resColor(attr.hintColor))
-            this.txtTitle.setTextColor(this.context.resColor(attr.hintColor))
-            this.txtTitleAnimate.setTextColor(this.context.resColor(attr.hintColor))
+            this.edtInput.setHintTextColor(attr.hintColor)
+            this.txtTitle.setTextColor(attr.hintColor)
+            this.txtTitleAnimate.setTextColor(attr.hintColor)
         }
         if (attr.hintFontFamily != -1) {
             this.txtTitle.typeface = ResourcesCompat.getFont(context, attr.hintFontFamily)
@@ -111,7 +111,7 @@ class CustomTextInputlayout : LinearLayout {
         }
 
         if (attr.textColor != -1) {
-            this.edtInput.setTextColor(this.context.resColor(attr.textColor))
+            this.edtInput.setTextColor(attr.textColor)
         }
 
         if (attr.textFontFamily != -1) {
@@ -190,7 +190,7 @@ class CustomTextInputlayout : LinearLayout {
             this.txtInfo.setText(attr.errorText)
         }
         if (attr.errorColor != -1) {
-            this.txtInfo.setTextColor(this.context.resColor(attr.errorColor))
+            this.txtInfo.setTextColor(attr.errorColor)
         } else {
             this.txtInfo.setTextColor(attr.defaultColor)
         }
@@ -211,7 +211,7 @@ class CustomTextInputlayout : LinearLayout {
             this.txtInfo.setText(attr.warningText)
         }
         if (attr.warningColor != -1) {
-            this.txtInfo.setTextColor(this.context.resColor(attr.warningColor))
+            this.txtInfo.setTextColor(attr.warningColor)
         } else {
             this.txtInfo.setTextColor(attr.defaultColor)
         }
@@ -232,7 +232,7 @@ class CustomTextInputlayout : LinearLayout {
             this.txtInfo.setText(attr.successText)
         }
         if (attr.successColor != -1) {
-            this.txtInfo.setTextColor(this.context.resColor(attr.successColor))
+            this.txtInfo.setTextColor(attr.successColor)
         } else {
             this.txtInfo.setTextColor(attr.defaultColor)
         }

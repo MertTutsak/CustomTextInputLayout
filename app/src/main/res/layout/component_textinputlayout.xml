@@ -45,10 +45,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginBottom="2dp"
-            android:inputType="none"
-            android:imeOptions="actionNone"
             android:layout_weight="1"
-            android:background="@null" />
+            android:background="@null"
+            android:imeOptions="actionNone"
+            android:inputType="none" />
 
         <ImageView
             android:id="@+id/endIcon"
@@ -84,22 +84,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginEnd="4dp"
-            android:visibility="gone" />
+            android:layout_marginEnd="4dp" />
 
         <TextView
             android:id="@+id/txtInfo"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:layout_weight="1"
             android:gravity="start|center_vertical"
-            android:textAlignment="textStart"
-            android:visibility="gone" />
+            android:textAlignment="textStart" />
 
         <TextView
             android:id="@+id/txtCounter"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"
             android:layout_marginStart="4dp"

@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         this.textInputLayout.onTextChanged {
             this.textInputLayout.setEndIconVisible(!it.isNullOrEmpty())
 
-            if (it.isNullOrEmpty()) {
+            if (!it.isNullOrEmpty()) {
                 this.textInputLayout.setInfoState(INFO_STATE.DEFAULT)
             } else {
                 this.textInputLayout.setInfoState(INFO_STATE.ERROR)
