@@ -130,9 +130,7 @@ class CustomTextInputlayout : LinearLayout {
         }
 
         this.edtInput.onTextChanged { charSequence, i, i2, i3 ->
-            this.waitForLayout {
-                hintAnimator.showIf(!charSequence.isNullOrEmpty())
-            }
+            hintAnimator.showIf(!charSequence.isNullOrEmpty())
             setCounter((charSequence ?: "").length)
         }
 

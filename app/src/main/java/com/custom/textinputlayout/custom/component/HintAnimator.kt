@@ -22,8 +22,7 @@ class HintAnimator(
     val isAnimateEnable: Boolean,
     val isAlignHintWithEdt: Boolean
 ) {
-    private val HINT_ANIMATOR_DURATION: Long
-        get() = 300L
+    private val HINT_ANIMATOR_DURATION: Long = 300
 
     private var showAnimator: AnimatorSet
     private var hideAnimator: AnimatorSet
@@ -45,7 +44,7 @@ class HintAnimator(
         }
 
         if (this.animate.visibility == View.GONE) {
-            val startY: Float = this.edtInput.y
+            val startY: Float = this.edtInput.y + (this.edtInput.height * 3 / 5)
             val endY: Float = this.hint.y
             val translateY = ObjectAnimator.ofFloat(
                 this.animate, "translationY",
@@ -60,7 +59,6 @@ class HintAnimator(
                 startX,
                 endX
             )
-
             val startSize: Float = this.viewGroup.context.px2sp(this.edtInput.textSize.toInt())
             val endSize: Float = this.viewGroup.context.px2sp(this.hint.textSize.toInt())
             val size = ValueAnimator.ofFloat(
@@ -112,7 +110,7 @@ class HintAnimator(
         }
         if (this.animate.visibility != View.GONE) {
             val startY: Float = this.hint.y
-            val endY: Float = this.edtInput.y
+            val endY: Float = this.edtInput.y + (this.edtInput.height * 3 / 5)
             val translateY = ObjectAnimator.ofFloat(
                 this.animate, "translationY",
                 startY,
@@ -146,14 +144,12 @@ class HintAnimator(
                 this.animate.setTextColor(it.animatedValue as Int)
             }
 
-            hideAnimator.duration = HINT_ANIMATOR_DURATION
             hideAnimator.addListener(
                 object : Animator.AnimatorListener {
                     override fun onAnimationRepeat(animation: Animator?) {
                     }
 
                     override fun onAnimationEnd(animation: Animator?) {
-                        this@HintAnimator.edtInput.hint = this@HintAnimator.hint.text
                         //Reset position
                         this@HintAnimator.animate.run {
                             gone()
@@ -162,6 +158,7 @@ class HintAnimator(
                             textSize = startSize
                             setTextColor(startColor)
                         }
+                        this@HintAnimator.edtInput.hint = this@HintAnimator.hint.text
                     }
 
                     override fun onAnimationCancel(animation: Animator?) {

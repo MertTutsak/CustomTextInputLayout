@@ -9,4 +9,3 @@
   - [x] Add getEdittext function
   - [x] Add getHint function
   - [x] Add setInputType and ImeOptions
-  - [ ] Set input for email and password specific
