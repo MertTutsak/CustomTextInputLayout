@@ -12,12 +12,12 @@ import android.view.animation.Transformation
  *   Created by mertttutsak on 21.01.2020.
  */
 
-fun View.setOnDebouncedClickListener(action: () -> Unit) {
+fun View.setOnDebouncedClickListener(action: (v:View) -> Unit) {
     val actionDebouncer = ActionDebouncer(action)
 
     // This is the only place in the project where we should actually use setOnClickListener
     setOnClickListener {
-        actionDebouncer.notifyAction()
+        actionDebouncer.notifyAction(it)
     }
 }
 
@@ -26,14 +26,14 @@ fun View.removeOnDebouncedClickListener() {
     isClickable = false
 }
 
-private class ActionDebouncer(private val action: () -> Unit) {
+private class ActionDebouncer(private val action: (v:View) -> Unit) {
     companion object {
         const val DEBOUNCE_INTERVAL_MILLISECONDS = 600L
     }
 
     private var lastActionTime = 0L
 
-    fun notifyAction() {
+    fun notifyAction(view:View) {
         val now = SystemClock.elapsedRealtime()
 
         val millisecondsPassed = now - lastActionTime
@@ -41,7 +41,7 @@ private class ActionDebouncer(private val action: () -> Unit) {
         lastActionTime = now
 
         if (actionAllowed) {
-            action.invoke()
+            action.invoke(view)
         }
     }
 }
