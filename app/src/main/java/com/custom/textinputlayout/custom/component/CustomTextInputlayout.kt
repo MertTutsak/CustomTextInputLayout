@@ -189,7 +189,9 @@ class CustomTextInputlayout : LinearLayout {
     }
 
     fun clear(){
-        this.edtInput.setText("")
+        if(!getText().isNullOrEmpty()){
+            this.edtInput.setText("")
+        }
     }
 
     fun getText():String = this.edtInput.text.toString()
