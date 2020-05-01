@@ -1,14 +1,17 @@
 package com.custom.textinputlayout.custom.component
 
 import android.animation.*
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
+import com.custom.textinputlayout.R
 import com.custom.textinputlayout.extension.gone
 import com.custom.textinputlayout.extension.invisible
 import com.custom.textinputlayout.extension.px2sp
 import com.custom.textinputlayout.extension.visible
+import kotlinx.android.synthetic.main.component_textinputlayout.view.*
 
 /**
  *   Created by mertttutsak on 26.04.2020.
@@ -28,6 +31,9 @@ class HintAnimator(
     private var hideAnimator: AnimatorSet
 
     init {
+        if (!isAnimateEnable) {
+            animate.gone()
+        }
         showAnimator = AnimatorSet().apply {
             duration = HINT_ANIMATOR_DURATION
         }
@@ -39,7 +45,6 @@ class HintAnimator(
     private fun show() {
         if (!isAnimateEnable) {
             hint.visible()
-            animate.visible()
             return
         }
 
@@ -105,7 +110,6 @@ class HintAnimator(
     private fun hide() {
         if (!isAnimateEnable) {
             hint.invisible()
-            animate.invisible()
             return
         }
         if (this.animate.visibility != View.GONE) {

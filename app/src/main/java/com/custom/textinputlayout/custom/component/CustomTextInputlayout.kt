@@ -135,6 +135,7 @@ class CustomTextInputlayout : LinearLayout {
         }
 
         attr.text.notNull { this.edtInput.setText(it) }
+        hintAnimator.showIf(!getText().isNullOrEmpty())
     }
 
     private fun initLine() {
