@@ -46,6 +46,8 @@ class CustomTextInputlayout : LinearLayout {
         )
 
         initTextInputLayout()
+        initStartIcon()
+        initEndIcon()
         initHint()
         initEdittext()
         initLine()
@@ -60,6 +62,29 @@ class CustomTextInputlayout : LinearLayout {
             }
         }
     }
+
+    private fun initStartIcon() {
+        if (attr.startIcon != -1) {
+            if (attr.startIconSize != -1) {
+                this.startIcon.layoutParams.width = attr.startIconSize.dp
+                this.startIcon.layoutParams.height = attr.startIconSize.dp
+            }
+            this.startIcon.setImageResource(attr.startIcon)
+            this.startIcon.visible()
+        }
+    }
+
+    private fun initEndIcon() {
+        if (attr.endIcon != -1) {
+            if (attr.endIconSize != -1) {
+                this.endIcon.layoutParams.width = attr.endIconSize.dp
+                this.endIcon.layoutParams.height = attr.endIconSize.dp
+            }
+            this.endIcon.setImageResource(attr.endIcon)
+            this.endIcon.visible()
+        }
+    }
+
 
     private fun initHint() {
         if (attr.hintSize != -1) {

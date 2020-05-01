@@ -9,7 +9,9 @@ import com.custom.textinputlayout.R
 
 data class AttributeData(
     var startIcon: Int = -1,
+    var startIconSize: Int = -1,
     var endIcon: Int = -1,
+    var endIconSize: Int = -1,
     var hasHintAnimation: Boolean = true,
     var hasBottomLine: Boolean = true,
     var hint: String? = null,
@@ -31,9 +33,21 @@ data class AttributeData(
                     -1
                 )
 
+            startIconSize =
+                attributes.getInteger(
+                    R.styleable.CustomTextInputlayout_cti_startIconSize,
+                    -1
+                )
+
             endIcon =
                 attributes.getResourceId(
                     R.styleable.CustomTextInputlayout_cti_startIcon,
+                    -1
+                )
+
+            endIconSize =
+                attributes.getInteger(
+                    R.styleable.CustomTextInputlayout_cti_endIconSize,
                     -1
                 )
 

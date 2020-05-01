@@ -3,7 +3,9 @@
 
     <declare-styleable name="CustomTextInputlayout">
         <attr name="cti_startIcon" format="reference" />
+        <attr name="cti_startIconSize" format="integer" />
         <attr name="cti_endIcon" format="reference" />
+        <attr name="cti_endIconSize" format="integer" />
         <attr name="cti_bottomLine" format="boolean" />
         <attr name="cti_hintAnimation" format="boolean" />
         <attr name="cti_hint" format="string" />
