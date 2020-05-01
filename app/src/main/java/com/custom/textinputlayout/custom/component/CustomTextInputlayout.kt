@@ -18,6 +18,7 @@ class CustomTextInputlayout : LinearLayout {
 
     var attr = AttributeData()
     lateinit var hintAnimator: HintAnimator
+    var stateType = STATE_TYPE.DEFAULT
 
     constructor(context: Context) : super(context) {
         init(context, null)
@@ -129,6 +130,9 @@ class CustomTextInputlayout : LinearLayout {
     }
 
     private fun initLine() {
+        if (attr.bottomLineColor != -1) {
+            this.bottomLine.setBackgroundColor(attr.bottomLineColor)
+        }
         this.bottomLine.visibleIf(attr.hasBottomLine, true)
     }
 
@@ -136,50 +140,50 @@ class CustomTextInputlayout : LinearLayout {
         if (attr.textMaxLength == -1 && attr.hasCounter) {
             throw Exception("max length of edittext must not be null")
         } else {
-            txtCounter.visibleIf(attr.hasCounter)
+            this.txtCounter.visibleIf(attr.hasCounter)
             setCounter(this.edtInput.text.length)
         }
     }
 
-    fun setStartIcon(icon:Int){
+    fun setStartIcon(icon: Int) {
         this.startIcon.setImageResource(icon)
         this.startIcon.visible()
     }
 
-    fun setStartIconVisible(isVisible:Boolean,saveSize:Boolean = false){
-        this.startIcon.drawable.isNull{
+    fun setStartIconVisible(isVisible: Boolean, saveSize: Boolean = false) {
+        this.startIcon.drawable.isNull {
             throw Exception("startIcon must not be empty")
         }
-        this.startIcon.visibleIf(isVisible,saveSize)
+        this.startIcon.visibleIf(isVisible, saveSize)
     }
 
-    fun setStartIconClickListener(onClick:(view:View)->Unit){
+    fun setStartIconClickListener(onClick: (view: View) -> Unit) {
         this.startIcon.setOnDebouncedClickListener {
             onClick(it)
         }
     }
 
-    fun setEndIcon(icon:Int){
+    fun setEndIcon(icon: Int) {
         this.endIcon.setImageResource(icon)
         this.endIcon.visible()
     }
 
-    fun setEndIconVisible(isVisible:Boolean,saveSize:Boolean = false){
-        this.endIcon.drawable.isNull{
+    fun setEndIconVisible(isVisible: Boolean, saveSize: Boolean = false) {
+        this.endIcon.drawable.isNull {
             throw Exception("endIcon must not be empty")
         }
 
-        this.endIcon.visibleIf(isVisible,saveSize)
+        this.endIcon.visibleIf(isVisible, saveSize)
     }
 
-    fun setEndIconClickListener(onClick:(view:View)->Unit){
+    fun setEndIconClickListener(onClick: (view: View) -> Unit) {
         this.endIcon.setOnDebouncedClickListener {
             onClick(it)
         }
     }
 
-    fun onTextChanged(onChanged:(text:String)->Unit){
-        this.edtInput.onTextChanged{ charSequence: CharSequence?, i: Int, i1: Int, i2: Int ->
+    fun onTextChanged(onChanged: (text: String) -> Unit) {
+        this.edtInput.onTextChanged { charSequence: CharSequence?, i: Int, i1: Int, i2: Int ->
             onChanged(charSequence.toString())
         }
     }
@@ -188,14 +192,14 @@ class CustomTextInputlayout : LinearLayout {
         txtCounter.text = "$length/${attr.textMaxLength}"
     }
 
-    fun clear(){
-        if(!getText().isNullOrEmpty()){
+    fun clear() {
+        if (!getText().isNullOrEmpty()) {
             this.edtInput.setText("")
         }
     }
 
-    fun getText():String = this.edtInput.text.toString()
+    fun getText(): String = this.edtInput.text.toString()
 
-    fun getHint():String = this.txtTitle.text.toString()
+    fun getHint(): String = this.txtTitle.text.toString()
 
 }

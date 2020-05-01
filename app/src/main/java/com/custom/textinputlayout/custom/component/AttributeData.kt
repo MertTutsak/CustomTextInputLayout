@@ -10,19 +10,45 @@ import com.custom.textinputlayout.R
 data class AttributeData(
     var startIcon: Int = -1,
     var startIconSize: Int = -1,
+
     var endIcon: Int = -1,
     var endIconSize: Int = -1,
-    var hasHintAnimation: Boolean = true,
+
     var hasBottomLine: Boolean = true,
+    var bottomLineColor: Int = -1,
+
+    var hasHintAnimation: Boolean = true,
     var hint: String? = null,
     var hintSize: Int = -1,
     var hintColor: Int = -1,
     var hintFontFamily: Int = -1,
+
     var text: String? = null,
     var textSize: Int = -1,
     var textColor: Int = -1,
     var textFontFamily: Int = -1,
     var textMaxLength: Int = -1,
+
+    /*var defaultText: String = "",
+    var defaultIcon: Int = -1,
+    var defaultColor: Int = -1,
+    var defaultFontFamily: Int = -1,*/
+
+    var errorText: String = "",
+    var errorIcon: Int = -1,
+    var errorColor: Int = -1,
+    var errorFontFamily: Int = -1,
+
+    var warningText: String = "",
+    var warningIcon: Int = -1,
+    var warningColor: Int = -1,
+    var warningFontFamily: Int = -1,
+
+    var successText: String = "",
+    var successIcon: Int = -1,
+    var successColor: Int = -1,
+    var successFontFamily: Int = -1,
+
     var hasCounter: Boolean = false
 ) {
     fun initAttr(attributes: TypedArray): AttributeData {
@@ -57,6 +83,8 @@ data class AttributeData(
                     true
                 )
 
+            bottomLineColor = attributes.getInteger(R.styleable.CustomTextInputlayout_cti_bottomLine_color, -1)
+
             hasHintAnimation =
                 attributes.getBoolean(
                     R.styleable.CustomTextInputlayout_cti_hintAnimation,
@@ -88,6 +116,58 @@ data class AttributeData(
             textMaxLength =
                 attributes.getInteger(
                     R.styleable.CustomTextInputlayout_cti_text_max_length,
+                    -1
+                )
+
+            /*defaultText = attributes.getString(R.styleable.CustomTextInputlayout_cti_default_text)?:""
+            defaultIcon = attributes.getResourceId(
+                R.styleable.CustomTextInputlayout_cti_default_icon,
+                -1
+            )
+            defaultColor =
+                attributes.getInteger(R.styleable.CustomTextInputlayout_cti_default_color, -1)
+            defaultFontFamily =
+                attributes.getInteger(
+                    R.styleable.CustomTextInputlayout_cti_default_family,
+                    -1
+                )*/
+
+            errorText = attributes.getString(R.styleable.CustomTextInputlayout_cti_error_text)?:""
+            errorIcon = attributes.getResourceId(
+                R.styleable.CustomTextInputlayout_cti_error_icon,
+                -1
+            )
+            errorColor =
+                attributes.getInteger(R.styleable.CustomTextInputlayout_cti_error_color, -1)
+            errorFontFamily =
+                attributes.getInteger(
+                    R.styleable.CustomTextInputlayout_cti_default_family,
+                    -1
+                )
+
+            warningText = attributes.getString(R.styleable.CustomTextInputlayout_cti_warning_text)?:""
+            warningIcon = attributes.getResourceId(
+                R.styleable.CustomTextInputlayout_cti_warning_icon,
+                -1
+            )
+            warningColor =
+                attributes.getInteger(R.styleable.CustomTextInputlayout_cti_warning_color, -1)
+            warningFontFamily =
+                attributes.getInteger(
+                    R.styleable.CustomTextInputlayout_cti_warning_family,
+                    -1
+                )
+
+            successText = attributes.getString(R.styleable.CustomTextInputlayout_cti_success_text)?:""
+            successIcon = attributes.getResourceId(
+                R.styleable.CustomTextInputlayout_cti_success_icon,
+                -1
+            )
+            successColor =
+                attributes.getInteger(R.styleable.CustomTextInputlayout_cti_success_color, -1)
+            successFontFamily =
+                attributes.getInteger(
+                    R.styleable.CustomTextInputlayout_cti_success_family,
                     -1
                 )
 

@@ -14,6 +14,7 @@
         app:cti_text_max_length="10"
         app:cti_startIcon="@drawable/ic_warning"
         app:cti_endIcon="@drawable/ic_info"
+        app:cti_bottomLine_color="@color/colorPrimary"
         app:cti_counter="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

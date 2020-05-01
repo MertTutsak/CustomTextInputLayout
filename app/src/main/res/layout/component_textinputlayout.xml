@@ -66,13 +66,14 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="2dp"
-        android:background="@color/colorPrimary" />
+        android:background="@color/colorAccent" />
 
     <LinearLayout
         android:id="@+id/contentBottomInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/bottomLine"
+        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:orientation="horizontal">
 
@@ -86,7 +87,7 @@
 
         <TextView
             android:id="@+id/txtState"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="start|center_vertical"
@@ -95,11 +96,12 @@
 
         <TextView
             android:id="@+id/txtCounter"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"
-            android:textAlignment="textEnd"
-            android:visibility="gone" />
+            android:layout_marginStart="4dp"
+            android:textAlignment="textEnd" />
 
     </LinearLayout>
 

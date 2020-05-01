@@ -4,19 +4,45 @@
     <declare-styleable name="CustomTextInputlayout">
         <attr name="cti_startIcon" format="reference" />
         <attr name="cti_startIconSize" format="integer" />
+
         <attr name="cti_endIcon" format="reference" />
         <attr name="cti_endIconSize" format="integer" />
+
         <attr name="cti_bottomLine" format="boolean" />
+        <attr name="cti_bottomLine_color" format="integer" />
+
         <attr name="cti_hintAnimation" format="boolean" />
         <attr name="cti_hint" format="string" />
         <attr name="cti_hint_color" format="reference" />
         <attr name="cti_hint_size" format="integer" />
         <attr name="cti_hint_font_family" format="string" />
+
         <attr name="cti_text" format="string" />
         <attr name="cti_text_color" format="reference" />
         <attr name="cti_text_size" format="integer" />
         <attr name="cti_text_font_family" format="string" />
         <attr name="cti_text_max_length" format="integer" />
+
+        <attr name="cti_default_text" format="string" />
+        <attr name="cti_default_icon" format="reference" />
+        <attr name="cti_default_color" format="reference" />
+        <attr name="cti_default_family" format="string" />
+
+        <attr name="cti_error_text" format="string" />
+        <attr name="cti_error_icon" format="reference" />
+        <attr name="cti_error_color" format="reference" />
+        <attr name="cti_error_family" format="string" />
+
+        <attr name="cti_warning_text" format="string" />
+        <attr name="cti_warning_icon" format="reference" />
+        <attr name="cti_warning_color" format="reference" />
+        <attr name="cti_warning_family" format="string" />
+
+        <attr name="cti_success_text" format="string" />
+        <attr name="cti_success_icon" format="reference" />
+        <attr name="cti_success_color" format="reference" />
+        <attr name="cti_success_family" format="string" />
+
         <attr name="cti_counter" format="boolean" />
     </declare-styleable>
 
