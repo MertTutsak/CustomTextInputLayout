@@ -42,10 +42,10 @@
         <EditText
             android:id="@+id/edtInput"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginBottom="2dp"
+            android:layout_weight="1"
             android:background="@null" />
 
         <ImageView
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="4dp"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
     </LinearLayout>
 
@@ -68,14 +68,39 @@
         android:layout_marginBottom="2dp"
         android:background="@color/colorPrimary" />
 
-    <TextView
-        android:id="@+id/txtCounter"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/contentBottomInfo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/bottomLine"
         android:layout_alignParentEnd="true"
-        android:layout_gravity="end"
-        android:textAlignment="textEnd"
-        android:visibility="gone" />
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/stateIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="4dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/txtState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="start|center_vertical"
+            android:textAlignment="textStart"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/txtCounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:textAlignment="textEnd"
+            android:visibility="gone" />
+
+    </LinearLayout>
 
 </RelativeLayout>
