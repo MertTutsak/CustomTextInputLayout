@@ -11,6 +11,7 @@
         <attr name="cti_bottomLine" format="boolean" />
         <attr name="cti_bottomLine_color" format="integer" />
 
+        <attr name="cti_hint_edittext_align" format="boolean" />
         <attr name="cti_hintAnimation" format="boolean" />
         <attr name="cti_hint" format="string" />
         <attr name="cti_hint_color" format="reference" />

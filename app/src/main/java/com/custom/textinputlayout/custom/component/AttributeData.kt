@@ -18,6 +18,7 @@ data class AttributeData(
     var hasBottomLine: Boolean = true,
     var bottomLineColor: Int = -1,
 
+    var hintEdittextAlign: Boolean = false,
     var hasHintAnimation: Boolean = true,
     var hint: String? = null,
     var hintSize: Int = -1,
@@ -31,7 +32,7 @@ data class AttributeData(
     var textMaxLength: Int = -1,
 
     var infoFontFamily: Int = -1,
-    var isLineColorWithInfo:Boolean = false,
+    var isLineColorWithInfo: Boolean = false,
 
     var defaultText: String = "",
     var defaultIcon: Int = -1,
@@ -83,7 +84,8 @@ data class AttributeData(
                     true
                 )
 
-            bottomLineColor = attributes.getInteger(R.styleable.CustomTextInputlayout_cti_bottomLine_color, -1)
+            bottomLineColor =
+                attributes.getInteger(R.styleable.CustomTextInputlayout_cti_bottomLine_color, -1)
 
             hasHintAnimation =
                 attributes.getBoolean(
@@ -91,6 +93,10 @@ data class AttributeData(
                     true
                 )
 
+            hintEdittextAlign = attributes.getBoolean(
+                R.styleable.CustomTextInputlayout_cti_hint_edittext_align,
+                false
+            )
             hint = attributes.getString(R.styleable.CustomTextInputlayout_cti_hint)
             hintSize =
                 attributes.getInteger(R.styleable.CustomTextInputlayout_cti_hint_size, -1)
@@ -131,7 +137,8 @@ data class AttributeData(
                     false
                 )
 
-            defaultText = attributes.getString(R.styleable.CustomTextInputlayout_cti_default_text)?:""
+            defaultText =
+                attributes.getString(R.styleable.CustomTextInputlayout_cti_default_text) ?: ""
             defaultIcon = attributes.getResourceId(
                 R.styleable.CustomTextInputlayout_cti_default_icon,
                 -1
@@ -139,7 +146,7 @@ data class AttributeData(
             defaultColor =
                 attributes.getInteger(R.styleable.CustomTextInputlayout_cti_default_color, -1)
 
-            errorText = attributes.getString(R.styleable.CustomTextInputlayout_cti_error_text)?:""
+            errorText = attributes.getString(R.styleable.CustomTextInputlayout_cti_error_text) ?: ""
             errorIcon = attributes.getResourceId(
                 R.styleable.CustomTextInputlayout_cti_error_icon,
                 -1
@@ -147,7 +154,8 @@ data class AttributeData(
             errorColor =
                 attributes.getInteger(R.styleable.CustomTextInputlayout_cti_error_color, -1)
 
-            warningText = attributes.getString(R.styleable.CustomTextInputlayout_cti_warning_text)?:""
+            warningText =
+                attributes.getString(R.styleable.CustomTextInputlayout_cti_warning_text) ?: ""
             warningIcon = attributes.getResourceId(
                 R.styleable.CustomTextInputlayout_cti_warning_icon,
                 -1
@@ -155,7 +163,8 @@ data class AttributeData(
             warningColor =
                 attributes.getInteger(R.styleable.CustomTextInputlayout_cti_warning_color, -1)
 
-            successText = attributes.getString(R.styleable.CustomTextInputlayout_cti_success_text)?:""
+            successText =
+                attributes.getString(R.styleable.CustomTextInputlayout_cti_success_text) ?: ""
             successIcon = attributes.getResourceId(
                 R.styleable.CustomTextInputlayout_cti_success_icon,
                 -1
