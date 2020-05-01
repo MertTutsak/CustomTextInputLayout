@@ -2695,7 +2695,7 @@
         <attr format="boolean" name="cti_bottomLine"/>
         <attr format="integer" name="cti_bottomLine_color"/>
 
-        <attr format="boolean" name="cti_hint_edittext_align"/>
+        <attr format="boolean" name="cti_is_align_hint_with_edt"/>
         <attr format="boolean" name="cti_hintAnimation"/>
         <attr format="string" name="cti_hint"/>
         <attr format="reference" name="cti_hint_color"/>
@@ -3673,7 +3673,7 @@
         <attr format="boolean" name="cti_bottomLine"/>
         <attr format="integer" name="cti_bottomLine_color"/>
 
-        <attr format="boolean" name="cti_hint_edittext_align"/>
+        <attr format="boolean" name="cti_is_align_hint_with_edt"/>
         <attr format="boolean" name="cti_hintAnimation"/>
         <attr format="string" name="cti_hint"/>
         <attr format="reference" name="cti_hint_color"/>

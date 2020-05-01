@@ -18,7 +18,7 @@ data class AttributeData(
     var hasBottomLine: Boolean = true,
     var bottomLineColor: Int = -1,
 
-    var hintEdittextAlign: Boolean = false,
+    var isAlignHintWithEdt: Boolean = false,
     var hasHintAnimation: Boolean = true,
     var hint: String? = null,
     var hintSize: Int = -1,
@@ -93,8 +93,8 @@ data class AttributeData(
                     true
                 )
 
-            hintEdittextAlign = attributes.getBoolean(
-                R.styleable.CustomTextInputlayout_cti_hint_edittext_align,
+            isAlignHintWithEdt = attributes.getBoolean(
+                R.styleable.CustomTextInputlayout_cti_is_align_hint_with_edt,
                 false
             )
             hint = attributes.getString(R.styleable.CustomTextInputlayout_cti_hint)

@@ -137,8 +137,8 @@ int attr cti_error_text 0x7f02006f
 int attr cti_hint 0x7f020070
 int attr cti_hintAnimation 0x7f020071
 int attr cti_hint_color 0x7f020072
-int attr cti_hint_edittext_align 0x7f020073
-int attr cti_hint_size 0x7f020074
+int attr cti_hint_size 0x7f020073
+int attr cti_is_align_hint_with_edt 0x7f020074
 int attr cti_line_color_with_info 0x7f020075
 int attr cti_startIcon 0x7f020076
 int attr cti_startIconSize 0x7f020077
@@ -1755,8 +1755,8 @@ int styleable CustomTextInputlayout_cti_error_text 10
 int styleable CustomTextInputlayout_cti_hint 11
 int styleable CustomTextInputlayout_cti_hintAnimation 12
 int styleable CustomTextInputlayout_cti_hint_color 13
-int styleable CustomTextInputlayout_cti_hint_edittext_align 14
-int styleable CustomTextInputlayout_cti_hint_size 15
+int styleable CustomTextInputlayout_cti_hint_size 14
+int styleable CustomTextInputlayout_cti_is_align_hint_with_edt 15
 int styleable CustomTextInputlayout_cti_line_color_with_info 16
 int styleable CustomTextInputlayout_cti_startIcon 17
 int styleable CustomTextInputlayout_cti_startIconSize 18

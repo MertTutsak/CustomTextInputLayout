@@ -57,7 +57,14 @@ class CustomTextInputlayout : LinearLayout {
     }
 
     private fun initTextInputLayout() {
-        hintAnimator = HintAnimator(this, this.txtTitle, this.txtTitleAnimate, this.edtInput,this.attr.hasHintAnimation)
+        hintAnimator = HintAnimator(
+            this,
+            this.txtTitle,
+            this.txtTitleAnimate,
+            this.edtInput,
+            this.attr.hasHintAnimation,
+            this.attr.isAlignHintWithEdt
+        )
         this.onTouch {
             if (!it) {
                 this.edtInput.focus()
@@ -123,7 +130,9 @@ class CustomTextInputlayout : LinearLayout {
         }
 
         this.edtInput.onTextChanged { charSequence, i, i2, i3 ->
-            hintAnimator.showIf(!charSequence.isNullOrEmpty())
+            this.waitForLayout {
+                hintAnimator.showIf(!charSequence.isNullOrEmpty())
+            }
             setCounter((charSequence ?: "").length)
         }
 
@@ -131,7 +140,7 @@ class CustomTextInputlayout : LinearLayout {
     }
 
     private fun initLine() {
-        if(attr.hasBottomLine){
+        if (attr.hasBottomLine) {
             if (attr.isLineColorWithInfo && infoState == INFO_STATE.DEFAULT && attr.defaultColor != -1) {
                 this.bottomLine.setBackgroundColor(attr.defaultColor)
             } else if (attr.isLineColorWithInfo && infoState == INFO_STATE.ERROR && attr.errorColor != -1) {
@@ -251,7 +260,7 @@ class CustomTextInputlayout : LinearLayout {
 
     fun setStartIcon(icon: Int) {
         this.startIcon.setImageResource(icon)
-        this.startIcon.visible()
+        setStartIconVisible(true)
     }
 
     fun setStartIconVisible(isVisible: Boolean, saveSize: Boolean = false) {
@@ -259,6 +268,7 @@ class CustomTextInputlayout : LinearLayout {
             throw Exception("startIcon must not be empty")
         }
         this.startIcon.visibleIf(isVisible, saveSize)
+        hintAnimator.hintAlign()
     }
 
     fun setStartIconClickListener(onClick: (view: View) -> Unit) {
@@ -269,7 +279,7 @@ class CustomTextInputlayout : LinearLayout {
 
     fun setEndIcon(icon: Int) {
         this.endIcon.setImageResource(icon)
-        this.endIcon.visible()
+        setEndIconVisible(true)
     }
 
     fun setEndIconVisible(isVisible: Boolean, saveSize: Boolean = false) {

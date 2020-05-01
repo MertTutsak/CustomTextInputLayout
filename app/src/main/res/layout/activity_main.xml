@@ -16,6 +16,8 @@
         app:cti_endIcon="@drawable/ic_cancel"
         app:cti_counter="true"
 
+        app:cti_is_align_hint_with_edt="false"
+
         app:cti_hintAnimation="false"
 
         app:cti_line_color_with_info="true"

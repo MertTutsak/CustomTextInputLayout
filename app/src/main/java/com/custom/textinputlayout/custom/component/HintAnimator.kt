@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
 import com.custom.textinputlayout.extension.gone
+import com.custom.textinputlayout.extension.invisible
 import com.custom.textinputlayout.extension.px2sp
 import com.custom.textinputlayout.extension.visible
 
@@ -18,14 +19,11 @@ class HintAnimator(
     val hint: TextView,
     val animate: TextView,
     val edtInput: EditText,
-    val isAnimateEnable: Boolean
+    val isAnimateEnable: Boolean,
+    val isAlignHintWithEdt: Boolean
 ) {
     private val HINT_ANIMATOR_DURATION: Long
-        get() = if (isAnimateEnable) {
-            300L
-        } else {
-            0L
-        }
+        get() = 300L
 
     private var showAnimator: AnimatorSet
     private var hideAnimator: AnimatorSet
@@ -40,6 +38,12 @@ class HintAnimator(
     }
 
     private fun show() {
+        if (!isAnimateEnable) {
+            hint.visible()
+            animate.visible()
+            return
+        }
+
         if (this.animate.visibility == View.GONE) {
             val startY: Float = this.edtInput.y
             val endY: Float = this.hint.y
@@ -101,6 +105,11 @@ class HintAnimator(
     }
 
     private fun hide() {
+        if (!isAnimateEnable) {
+            hint.invisible()
+            animate.invisible()
+            return
+        }
         if (this.animate.visibility != View.GONE) {
             val startY: Float = this.hint.y
             val endY: Float = this.edtInput.y
@@ -169,10 +178,18 @@ class HintAnimator(
     }
 
     fun showIf(isShow: Boolean) {
+        this.hintAlign()
         if (isShow) {
             show()
         } else {
             hide()
+        }
+    }
+
+    fun hintAlign() {
+        if (isAlignHintWithEdt) {
+            hint.x = edtInput.x
+            animate.x = edtInput.x
         }
     }
 }
