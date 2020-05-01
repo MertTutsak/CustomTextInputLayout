@@ -69,8 +69,7 @@ class CustomTextInputlayout : LinearLayout {
                 this.startIcon.layoutParams.width = attr.startIconSize.dp
                 this.startIcon.layoutParams.height = attr.startIconSize.dp
             }
-            this.startIcon.setImageResource(attr.startIcon)
-            this.startIcon.visible()
+            this.setStartIcon(attr.startIcon)
         }
     }
 
@@ -80,11 +79,9 @@ class CustomTextInputlayout : LinearLayout {
                 this.endIcon.layoutParams.width = attr.endIconSize.dp
                 this.endIcon.layoutParams.height = attr.endIconSize.dp
             }
-            this.endIcon.setImageResource(attr.endIcon)
-            this.endIcon.visible()
+            this.setEndIcon(attr.endIcon)
         }
     }
-
 
     private fun initHint() {
         if (attr.hintSize != -1) {
@@ -142,6 +139,16 @@ class CustomTextInputlayout : LinearLayout {
             txtCounter.visibleIf(attr.hasCounter)
             setCounter(this.edtInput.text.length)
         }
+    }
+
+    fun setStartIcon(icon:Int){
+        this.startIcon.setImageResource(icon)
+        this.startIcon.visible()
+    }
+
+    fun setEndIcon(icon:Int){
+        this.endIcon.setImageResource(icon)
+        this.endIcon.visible()
     }
 
     fun setCounter(length: Int) {
