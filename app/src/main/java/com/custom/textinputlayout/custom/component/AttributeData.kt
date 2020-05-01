@@ -1,6 +1,7 @@
 package com.custom.textinputlayout.custom.component
 
 import android.content.res.TypedArray
+import android.widget.TextView
 import com.custom.textinputlayout.R
 
 /**
@@ -29,25 +30,23 @@ data class AttributeData(
     var textFontFamily: Int = -1,
     var textMaxLength: Int = -1,
 
-    /*var defaultText: String = "",
+    var infoFontFamily: Int = -1,
+
+    var defaultText: String = "",
     var defaultIcon: Int = -1,
     var defaultColor: Int = -1,
-    var defaultFontFamily: Int = -1,*/
 
     var errorText: String = "",
     var errorIcon: Int = -1,
     var errorColor: Int = -1,
-    var errorFontFamily: Int = -1,
 
     var warningText: String = "",
     var warningIcon: Int = -1,
     var warningColor: Int = -1,
-    var warningFontFamily: Int = -1,
 
     var successText: String = "",
     var successIcon: Int = -1,
     var successColor: Int = -1,
-    var successFontFamily: Int = -1,
 
     var hasCounter: Boolean = false
 ) {
@@ -139,11 +138,6 @@ data class AttributeData(
             )
             errorColor =
                 attributes.getInteger(R.styleable.CustomTextInputlayout_cti_error_color, -1)
-            errorFontFamily =
-                attributes.getInteger(
-                    R.styleable.CustomTextInputlayout_cti_default_family,
-                    -1
-                )
 
             warningText = attributes.getString(R.styleable.CustomTextInputlayout_cti_warning_text)?:""
             warningIcon = attributes.getResourceId(
@@ -152,11 +146,6 @@ data class AttributeData(
             )
             warningColor =
                 attributes.getInteger(R.styleable.CustomTextInputlayout_cti_warning_color, -1)
-            warningFontFamily =
-                attributes.getInteger(
-                    R.styleable.CustomTextInputlayout_cti_warning_family,
-                    -1
-                )
 
             successText = attributes.getString(R.styleable.CustomTextInputlayout_cti_success_text)?:""
             successIcon = attributes.getResourceId(
@@ -165,9 +154,9 @@ data class AttributeData(
             )
             successColor =
                 attributes.getInteger(R.styleable.CustomTextInputlayout_cti_success_color, -1)
-            successFontFamily =
+            infoFontFamily =
                 attributes.getInteger(
-                    R.styleable.CustomTextInputlayout_cti_success_family,
+                    R.styleable.CustomTextInputlayout_cti_info_font_family,
                     -1
                 )
 

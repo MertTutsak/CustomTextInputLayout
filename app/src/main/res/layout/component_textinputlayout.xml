@@ -80,7 +80,7 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/stateIcon"
+            android:id="@+id/infoIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -88,7 +88,7 @@
             android:visibility="gone" />
 
         <TextView
-            android:id="@+id/txtState"
+            android:id="@+id/txtInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"

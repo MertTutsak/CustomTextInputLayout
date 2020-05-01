@@ -1,7 +1,6 @@
 package com.custom.textinputlayout.custom.component
 
 import android.content.Context
-import android.text.InputType
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
@@ -19,7 +18,7 @@ class CustomTextInputlayout : LinearLayout {
 
     var attr = AttributeData()
     lateinit var hintAnimator: HintAnimator
-    var stateType = STATE_TYPE.DEFAULT
+    var infoState = INFO_STATE.DEFAULT
 
     constructor(context: Context) : super(context) {
         init(context, null)
@@ -53,6 +52,7 @@ class CustomTextInputlayout : LinearLayout {
         initHint()
         initEdittext()
         initLine()
+        initInfo()
         initCounter()
     }
 
@@ -137,6 +137,98 @@ class CustomTextInputlayout : LinearLayout {
         this.bottomLine.visibleIf(attr.hasBottomLine, true)
     }
 
+    private fun setInfoFontFamily() {
+        if (attr.infoFontFamily != -1) {
+            this.txtInfo.typeface = ResourcesCompat.getFont(context, attr.infoFontFamily)
+        }
+    }
+
+    private fun initInfo() {
+        if(attr.defaultIcon == -1){
+            attr.defaultIcon = android.R.color.transparent
+        }
+
+        if(attr.defaultColor == -1){
+            attr.defaultColor = this.txtInfo.currentTextColor
+        }
+
+        initDefault()
+    }
+
+    private fun initDefault(text: String = "") {
+        this.infoIcon.setImageResource(attr.defaultIcon)
+        if (!text.isNullOrEmpty()) {
+            this.txtInfo.setText(text)
+        } else {
+            this.txtInfo.setText(attr.defaultText)
+        }
+        this.txtInfo.setTextColor(this.context.resColor(attr.defaultColor))
+        this.setInfoFontFamily()
+    }
+
+    private fun initError(text: String = "") {
+        if (attr.errorIcon != -1) {
+            this.infoIcon.setImageResource(attr.errorIcon)
+        } else {
+            this.infoIcon.setImageResource(attr.defaultIcon)
+        }
+
+        if (!text.isNullOrEmpty()) {
+            this.txtInfo.setText(text)
+        } else {
+            this.txtInfo.setText(attr.errorText)
+        }
+        if (attr.errorColor != -1) {
+            this.txtInfo.setTextColor(this.context.resColor(attr.errorColor))
+        } else {
+            this.txtInfo.setTextColor(this.context.resColor(attr.defaultColor))
+        }
+
+        this.setInfoFontFamily()
+    }
+
+    private fun initWarning(text: String = "") {
+        if (attr.warningIcon != -1) {
+            this.infoIcon.setImageResource(attr.warningIcon)
+        } else {
+            this.infoIcon.setImageResource(attr.defaultIcon)
+        }
+
+        if (!text.isNullOrEmpty()) {
+            this.txtInfo.setText(text)
+        } else {
+            this.txtInfo.setText(attr.warningText)
+        }
+        if (attr.warningColor != -1) {
+            this.txtInfo.setTextColor(this.context.resColor(attr.warningColor))
+        } else {
+            this.txtInfo.setTextColor(this.context.resColor(attr.defaultColor))
+        }
+
+        this.setInfoFontFamily()
+    }
+
+    private fun initSuccess(text: String = "") {
+        if (attr.successIcon != -1) {
+            this.infoIcon.setImageResource(attr.successIcon)
+        } else {
+            this.infoIcon.setImageResource(attr.defaultIcon)
+        }
+
+        if (!text.isNullOrEmpty()) {
+            this.txtInfo.setText(text)
+        } else {
+            this.txtInfo.setText(attr.successText)
+        }
+        if (attr.successColor != -1) {
+            this.txtInfo.setTextColor(this.context.resColor(attr.successColor))
+        } else {
+            this.txtInfo.setTextColor(this.context.resColor(attr.defaultColor))
+        }
+
+        this.setInfoFontFamily()
+    }
+
     private fun initCounter() {
         if (attr.textMaxLength == -1 && attr.hasCounter) {
             throw Exception("max length of edittext must not be null")
@@ -183,10 +275,22 @@ class CustomTextInputlayout : LinearLayout {
         }
     }
 
-    fun onTextChanged(onChanged: (text: String) -> Unit) {
-        this.edtInput.onTextChanged { charSequence: CharSequence?, i: Int, i1: Int, i2: Int ->
-            onChanged(charSequence.toString())
+    fun setInfoState(infoState: INFO_STATE, text: String = "") {
+        when (infoState) {
+            INFO_STATE.DEFAULT -> {
+                initDefault(text)
+            }
+            INFO_STATE.ERROR -> {
+                initError(text)
+            }
+            INFO_STATE.WARNING -> {
+                initWarning(text)
+            }
+            INFO_STATE.SUCCESS -> {
+                initSuccess(text)
+            }
         }
+
     }
 
     fun setCounter(length: Int) {
@@ -198,6 +302,14 @@ class CustomTextInputlayout : LinearLayout {
             this.edtInput.setText("")
         }
     }
+
+    fun onTextChanged(onChanged: (text: String) -> Unit) {
+        this.edtInput.onTextChanged { charSequence: CharSequence?, i: Int, i1: Int, i2: Int ->
+            onChanged(charSequence.toString())
+        }
+    }
+
+    fun getInfoText(): String = this.txtInfo.text.toString()
 
     fun getText(): String = this.edtInput.text.toString()
 
