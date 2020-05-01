@@ -57,17 +57,17 @@
                         "startLines": "3",
                         "startColumns": "4",
                         "startOffsets": "56",
-                        "endLines": "47",
+                        "endLines": "48",
                         "endColumns": "24",
-                        "endOffsets": "2083"
+                        "endOffsets": "2136"
                     },
                     "to": {
                         "startLines": "2573",
                         "startColumns": "4",
                         "startOffsets": "151280",
-                        "endLines": "2617",
+                        "endLines": "2618",
                         "endColumns": "24",
-                        "endOffsets": "153277"
+                        "endOffsets": "153329"
                     }
                 },
                 {

@@ -2710,6 +2710,7 @@
         <attr format="integer" name="cti_text_max_length"/>
 
         
+        <attr format="boolean" name="cti_hasInfo"/>
         <attr format="boolean" name="cti_line_color_with_info"/>
 
         <attr format="string" name="cti_default_text"/>
@@ -3689,6 +3690,7 @@
         <attr format="integer" name="cti_text_max_length"/>
 
         
+        <attr format="boolean" name="cti_hasInfo"/>
         <attr format="boolean" name="cti_line_color_with_info"/>
 
         <attr format="string" name="cti_default_text"/>

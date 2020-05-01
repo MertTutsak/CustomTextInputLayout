@@ -33,6 +33,7 @@ data class AttributeData(
     var textMaxLength: Int = -1,
 
     var infoFontFamily: Int = -1,
+    var hasInfo: Boolean = true,
     var isLineColorWithInfo: Boolean = false,
 
     var defaultText: String = "",
@@ -135,6 +136,11 @@ data class AttributeData(
                     R.styleable.CustomTextInputlayout_cti_info_font_family,
                     -1
                 )*/
+
+            hasInfo = attributes.getBoolean(
+                R.styleable.CustomTextInputlayout_cti_hasInfo,
+                true
+            )
 
             isLineColorWithInfo =
                 attributes.getBoolean(

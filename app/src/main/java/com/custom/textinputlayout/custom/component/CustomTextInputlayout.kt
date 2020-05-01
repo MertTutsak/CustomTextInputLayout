@@ -110,7 +110,7 @@ class CustomTextInputlayout : LinearLayout {
             this.txtTitle.text = it
             this.txtTitleAnimate.text = it
         }
-        if(!attr.isHintEnable){
+        if (!attr.isHintEnable) {
             this.txtTitle.gone()
             this.txtTitleAnimate.gone()
         }
@@ -134,18 +134,18 @@ class CustomTextInputlayout : LinearLayout {
         }
 
         this.edtInput.onTextChanged { charSequence, i, i2, i3 ->
-            if(attr.isHintEnable){
+            if (attr.isHintEnable) {
                 hintAnimator.showIf(!charSequence.isNullOrEmpty())
             }
             setCounter((charSequence ?: "").length)
         }
 
         attr.text.notNull { this.edtInput.setText(it) }
-        if(attr.isHintEnable){
+        if (attr.isHintEnable) {
             waitForLayout {
                 hintAnimator.showIf(!getText().isNullOrEmpty())
             }
-        }else{
+        } else {
             (attr.hint ?: "").let {
                 this.edtInput.setHint(it)
             }
@@ -177,15 +177,19 @@ class CustomTextInputlayout : LinearLayout {
     }
 
     private fun initInfo() {
-        if (attr.defaultIcon == -1) {
-            attr.defaultIcon = android.R.color.transparent
-        }
+        if (!attr.hasInfo) {
+            infoVisible(attr.hasInfo)
+        } else {
+            if (attr.defaultIcon == -1) {
+                attr.defaultIcon = android.R.color.transparent
+            }
 
-        if (attr.defaultColor == -1) {
-            attr.defaultColor = this.txtInfo.currentTextColor
-        }
+            if (attr.defaultColor == -1) {
+                attr.defaultColor = this.txtInfo.currentTextColor
+            }
 
-        initDefault()
+            initDefault()
+        }
     }
 
     private fun initDefault(text: String = "") {
@@ -266,7 +270,7 @@ class CustomTextInputlayout : LinearLayout {
         if (attr.textMaxLength == -1 && attr.hasCounter) {
             throw Exception("max length of edittext must not be null")
         } else {
-            this.txtCounter.visibleIf(attr.hasCounter)
+            counterVisible(attr.hasCounter)
             setCounter(this.edtInput.text.length)
         }
     }
@@ -330,8 +334,17 @@ class CustomTextInputlayout : LinearLayout {
         initLine()
     }
 
+    fun infoVisible(hasInfo: Boolean, saveSize: Boolean = false) {
+        this.infoIcon.visibleIf(attr.hasInfo, saveSize)
+        this.txtInfo.visibleIf(attr.hasInfo, saveSize)
+    }
+
     fun setCounter(length: Int) {
         txtCounter.text = "$length/${attr.textMaxLength}"
+    }
+
+    fun counterVisible(hasInfo: Boolean, saveSize: Boolean = false) {
+        this.txtCounter.visibleIf(hasInfo,saveSize)
     }
 
     fun clear() {
