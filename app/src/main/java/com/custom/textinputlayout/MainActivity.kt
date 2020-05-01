@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             this.textInputLayout.clear()
         }
 
-
+        this.textInputLayout.setEndIconVisible(false)
         this.textInputLayout.onTextChanged {
             this.textInputLayout.setEndIconVisible(!it.isNullOrEmpty())
 
@@ -35,11 +35,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-    /*for (i in 0..Int.MAX_VALUE){
-        this.textInputLayout.edtInput.findViewById<TextView>(i).notNull {
-            Log.i("FINDBYID",it.toString())
-        }
-    }*/
 
 }
