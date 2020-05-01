@@ -17,9 +17,15 @@ class HintAnimator(
     val viewGroup: ViewGroup,
     val hint: TextView,
     val animate: TextView,
-    val edtInput: EditText
+    val edtInput: EditText,
+    val isAnimateEnable: Boolean
 ) {
-    private val HINT_ANIMATOR_DURATION = 300L
+    private val HINT_ANIMATOR_DURATION: Long
+        get() = if (isAnimateEnable) {
+            300L
+        } else {
+            0L
+        }
 
     private var showAnimator: AnimatorSet
     private var hideAnimator: AnimatorSet
@@ -131,7 +137,7 @@ class HintAnimator(
                 this.animate.setTextColor(it.animatedValue as Int)
             }
 
-            hideAnimator.duration = 300
+            hideAnimator.duration = HINT_ANIMATOR_DURATION
             hideAnimator.addListener(
                 object : Animator.AnimatorListener {
                     override fun onAnimationRepeat(animation: Animator?) {

@@ -57,7 +57,7 @@ class CustomTextInputlayout : LinearLayout {
     }
 
     private fun initTextInputLayout() {
-        hintAnimator = HintAnimator(this, this.txtTitle, this.txtTitleAnimate, this.edtInput)
+        hintAnimator = HintAnimator(this, this.txtTitle, this.txtTitleAnimate, this.edtInput,this.attr.hasHintAnimation)
         this.onTouch {
             if (!it) {
                 this.edtInput.focus()

@@ -2695,19 +2695,20 @@
         <attr format="boolean" name="cti_bottomLine"/>
         <attr format="integer" name="cti_bottomLine_color"/>
 
+        <attr format="boolean" name="cti_hint_edittext_align"/>
         <attr format="boolean" name="cti_hintAnimation"/>
         <attr format="string" name="cti_hint"/>
         <attr format="reference" name="cti_hint_color"/>
         <attr format="integer" name="cti_hint_size"/>
-        <attr format="string" name="cti_hint_font_family"/>
+        
 
         <attr format="string" name="cti_text"/>
         <attr format="reference" name="cti_text_color"/>
         <attr format="integer" name="cti_text_size"/>
-        <attr format="string" name="cti_text_font_family"/>
+        
         <attr format="integer" name="cti_text_max_length"/>
 
-        <attr format="string" name="cti_info_font_family"/>
+        
         <attr format="boolean" name="cti_line_color_with_info"/>
 
         <attr format="string" name="cti_default_text"/>
@@ -3672,19 +3673,20 @@
         <attr format="boolean" name="cti_bottomLine"/>
         <attr format="integer" name="cti_bottomLine_color"/>
 
+        <attr format="boolean" name="cti_hint_edittext_align"/>
         <attr format="boolean" name="cti_hintAnimation"/>
         <attr format="string" name="cti_hint"/>
         <attr format="reference" name="cti_hint_color"/>
         <attr format="integer" name="cti_hint_size"/>
-        <attr format="string" name="cti_hint_font_family"/>
+        
 
         <attr format="string" name="cti_text"/>
         <attr format="reference" name="cti_text_color"/>
         <attr format="integer" name="cti_text_size"/>
-        <attr format="string" name="cti_text_font_family"/>
+        
         <attr format="integer" name="cti_text_max_length"/>
 
-        <attr format="string" name="cti_info_font_family"/>
+        
         <attr format="boolean" name="cti_line_color_with_info"/>
 
         <attr format="string" name="cti_default_text"/>
