@@ -25,7 +25,11 @@ class HintAnimator(
     val isAnimateEnable: Boolean,
     val isAlignHintWithEdt: Boolean
 ) {
+    enum class HINT_STATE { SHOW, HIDE }
+
     private val HINT_ANIMATOR_DURATION: Long = 300
+
+    private var state: HINT_STATE? =null
 
     private var showAnimator: AnimatorSet
     private var hideAnimator: AnimatorSet
@@ -48,8 +52,8 @@ class HintAnimator(
             return
         }
 
-        if (this.animate.visibility == View.GONE) {
-            val startY: Float = this.edtInput.y + (this.edtInput.height * 3 / 5)
+        if (this.state != HINT_STATE.SHOW) {
+            val startY: Float = this.edtInput.y + (this.edtInput.height)
             val endY: Float = this.hint.y
             val translateY = ObjectAnimator.ofFloat(
                 this.animate, "translationY",
@@ -98,7 +102,7 @@ class HintAnimator(
                     }
 
                     override fun onAnimationStart(animation: Animator?) {
-                        this@HintAnimator.animate.visible()
+                        this@HintAnimator.state = HINT_STATE.SHOW
                     }
                 }
             )
@@ -112,9 +116,9 @@ class HintAnimator(
             hint.invisible()
             return
         }
-        if (this.animate.visibility != View.GONE) {
+        if (this.state != HINT_STATE.HIDE) {
             val startY: Float = this.hint.y
-            val endY: Float = this.edtInput.y + (this.edtInput.height * 3 / 5)
+            val endY: Float = this.edtInput.y + (this.edtInput.height)
             val translateY = ObjectAnimator.ofFloat(
                 this.animate, "translationY",
                 startY,
@@ -155,14 +159,13 @@ class HintAnimator(
 
                     override fun onAnimationEnd(animation: Animator?) {
                         //Reset position
-                        this@HintAnimator.animate.run {
+                        /*this@HintAnimator.animate.run {
                             gone()
                             translationX = 0f
                             translationY = 0f
                             textSize = startSize
                             setTextColor(startColor)
-                        }
-                        this@HintAnimator.edtInput.hint = this@HintAnimator.hint.text
+                        }*/
                     }
 
                     override fun onAnimationCancel(animation: Animator?) {
@@ -170,6 +173,7 @@ class HintAnimator(
                     }
 
                     override fun onAnimationStart(animation: Animator?) {
+                        this@HintAnimator.state = HINT_STATE.HIDE
                     }
                 }
             )

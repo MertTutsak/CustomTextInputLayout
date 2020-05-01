@@ -110,6 +110,10 @@ class CustomTextInputlayout : LinearLayout {
             this.txtTitle.text = it
             this.txtTitleAnimate.text = it
         }
+        if(!attr.isHintEnable){
+            this.txtTitle.gone()
+            this.txtTitleAnimate.gone()
+        }
     }
 
     private fun initEdittext() {
@@ -130,12 +134,22 @@ class CustomTextInputlayout : LinearLayout {
         }
 
         this.edtInput.onTextChanged { charSequence, i, i2, i3 ->
-            hintAnimator.showIf(!charSequence.isNullOrEmpty())
+            if(attr.isHintEnable){
+                hintAnimator.showIf(!charSequence.isNullOrEmpty())
+            }
             setCounter((charSequence ?: "").length)
         }
 
         attr.text.notNull { this.edtInput.setText(it) }
-        hintAnimator.showIf(!getText().isNullOrEmpty())
+        if(attr.isHintEnable){
+            waitForLayout {
+                hintAnimator.showIf(!getText().isNullOrEmpty())
+            }
+        }else{
+            (attr.hint ?: "").let {
+                this.edtInput.setHint(it)
+            }
+        }
     }
 
     private fun initLine() {

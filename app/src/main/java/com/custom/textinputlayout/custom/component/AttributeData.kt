@@ -21,6 +21,7 @@ data class AttributeData(
     var isAlignHintWithEdt: Boolean = false,
     var hasHintAnimation: Boolean = true,
     var hint: String? = null,
+    var isHintEnable:Boolean = true,
     var hintSize: Int = -1,
     var hintColor: Int = -1,
     var hintFontFamily: Int = -1,
@@ -96,6 +97,10 @@ data class AttributeData(
             isAlignHintWithEdt = attributes.getBoolean(
                 R.styleable.CustomTextInputlayout_cti_is_align_hint_with_edt,
                 false
+            )
+            isHintEnable= attributes.getBoolean(
+                R.styleable.CustomTextInputlayout_cti_hint_enable,
+                true
             )
             hint = attributes.getString(R.styleable.CustomTextInputlayout_cti_hint)
             hintSize =

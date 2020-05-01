@@ -14,6 +14,7 @@
         <attr name="cti_is_align_hint_with_edt" format="boolean" />
         <attr name="cti_hintAnimation" format="boolean" />
         <attr name="cti_hint" format="string" />
+        <attr name="cti_hint_enable" format="boolean" />
         <attr name="cti_hint_color" format="reference" />
         <attr name="cti_hint_size" format="integer" />
         <!--<attr name="cti_hint_font_family" format="string" />-->
