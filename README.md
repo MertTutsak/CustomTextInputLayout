@@ -8,5 +8,5 @@
   - [ ] Default/Error/Warning/Success states add
   - [x] Add getEdittext function
   - [x] Add getHint function
-  - [ ] Add setInputType and ImeOptions
+  - [x] Add setInputType and ImeOptions
   - [ ] Set input for email and password specific

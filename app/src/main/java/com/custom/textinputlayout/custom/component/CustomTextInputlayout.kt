@@ -1,6 +1,7 @@
 package com.custom.textinputlayout.custom.component
 
 import android.content.Context
+import android.text.InputType
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
@@ -201,5 +202,17 @@ class CustomTextInputlayout : LinearLayout {
     fun getText(): String = this.edtInput.text.toString()
 
     fun getHint(): String = this.txtTitle.text.toString()
+
+    fun addImeOptions(imeOptions: Int) {
+        edtInput.imeOptions = edtInput.imeOptions or imeOptions
+    }
+
+    fun setImeOptions(imeOptions: Int) {
+        edtInput.imeOptions = imeOptions
+    }
+
+    fun setInputType(inputType: Int) {
+        edtInput.inputType = inputType
+    }
 
 }
