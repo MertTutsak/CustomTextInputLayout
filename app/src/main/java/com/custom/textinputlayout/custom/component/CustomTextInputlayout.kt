@@ -19,6 +19,13 @@ class CustomTextInputlayout : LinearLayout {
     var attr = AttributeData()
     lateinit var hintAnimator: HintAnimator
     var infoState = INFO_STATE.DEFAULT
+        set(value) {
+            onInfoStateChanged.notNull {
+                it(field)
+            }
+            field = value
+        }
+    private var onInfoStateChanged: ((state: INFO_STATE) -> Unit)? = null
 
     constructor(context: Context) : super(context) {
         init(context, null)
@@ -344,7 +351,7 @@ class CustomTextInputlayout : LinearLayout {
     }
 
     fun counterVisible(hasInfo: Boolean, saveSize: Boolean = false) {
-        this.txtCounter.visibleIf(hasInfo,saveSize)
+        this.txtCounter.visibleIf(hasInfo, saveSize)
     }
 
     fun clear() {
@@ -357,6 +364,10 @@ class CustomTextInputlayout : LinearLayout {
         this.edtInput.onTextChanged { charSequence: CharSequence?, i: Int, i1: Int, i2: Int ->
             onChanged(charSequence.toString())
         }
+    }
+
+    fun onInfoStateChanged(onChanged: (state: INFO_STATE) -> Unit) {
+        onInfoStateChanged = onChanged
     }
 
     fun getInfoText(): String = this.txtInfo.text.toString()
