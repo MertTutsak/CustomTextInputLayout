@@ -131,9 +131,20 @@ class CustomTextInputlayout : LinearLayout {
     }
 
     private fun initLine() {
-        if (attr.bottomLineColor != -1) {
-            this.bottomLine.setBackgroundColor(attr.bottomLineColor)
+        if(attr.hasBottomLine){
+            if (attr.isLineColorWithInfo && infoState == INFO_STATE.DEFAULT && attr.defaultColor != -1) {
+                this.bottomLine.setBackgroundColor(attr.defaultColor)
+            } else if (attr.isLineColorWithInfo && infoState == INFO_STATE.ERROR && attr.errorColor != -1) {
+                this.bottomLine.setBackgroundColor(attr.errorColor)
+            } else if (attr.isLineColorWithInfo && infoState == INFO_STATE.WARNING && attr.warningColor != -1) {
+                this.bottomLine.setBackgroundColor(attr.warningColor)
+            } else if (attr.isLineColorWithInfo && infoState == INFO_STATE.SUCCESS && attr.successColor != -1) {
+                this.bottomLine.setBackgroundColor(attr.successColor)
+            } else if (attr.bottomLineColor != -1) {
+                this.bottomLine.setBackgroundColor(attr.bottomLineColor)
+            }
         }
+
         this.bottomLine.visibleIf(attr.hasBottomLine, true)
     }
 
@@ -144,11 +155,11 @@ class CustomTextInputlayout : LinearLayout {
     }
 
     private fun initInfo() {
-        if(attr.defaultIcon == -1){
+        if (attr.defaultIcon == -1) {
             attr.defaultIcon = android.R.color.transparent
         }
 
-        if(attr.defaultColor == -1){
+        if (attr.defaultColor == -1) {
             attr.defaultColor = this.txtInfo.currentTextColor
         }
 
@@ -162,7 +173,7 @@ class CustomTextInputlayout : LinearLayout {
         } else {
             this.txtInfo.setText(attr.defaultText)
         }
-        this.txtInfo.setTextColor(this.context.resColor(attr.defaultColor))
+        this.txtInfo.setTextColor(attr.defaultColor)
         this.setInfoFontFamily()
     }
 
@@ -181,7 +192,7 @@ class CustomTextInputlayout : LinearLayout {
         if (attr.errorColor != -1) {
             this.txtInfo.setTextColor(this.context.resColor(attr.errorColor))
         } else {
-            this.txtInfo.setTextColor(this.context.resColor(attr.defaultColor))
+            this.txtInfo.setTextColor(attr.defaultColor)
         }
 
         this.setInfoFontFamily()
@@ -202,7 +213,7 @@ class CustomTextInputlayout : LinearLayout {
         if (attr.warningColor != -1) {
             this.txtInfo.setTextColor(this.context.resColor(attr.warningColor))
         } else {
-            this.txtInfo.setTextColor(this.context.resColor(attr.defaultColor))
+            this.txtInfo.setTextColor(attr.defaultColor)
         }
 
         this.setInfoFontFamily()
@@ -223,7 +234,7 @@ class CustomTextInputlayout : LinearLayout {
         if (attr.successColor != -1) {
             this.txtInfo.setTextColor(this.context.resColor(attr.successColor))
         } else {
-            this.txtInfo.setTextColor(this.context.resColor(attr.defaultColor))
+            this.txtInfo.setTextColor(attr.defaultColor)
         }
 
         this.setInfoFontFamily()
@@ -276,7 +287,9 @@ class CustomTextInputlayout : LinearLayout {
     }
 
     fun setInfoState(infoState: INFO_STATE, text: String = "") {
-        when (infoState) {
+        this.infoState = infoState
+
+        when (this.infoState) {
             INFO_STATE.DEFAULT -> {
                 initDefault(text)
             }
@@ -291,6 +304,7 @@ class CustomTextInputlayout : LinearLayout {
             }
         }
 
+        initLine()
     }
 
     fun setCounter(length: Int) {

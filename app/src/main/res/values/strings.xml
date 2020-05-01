@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TextInputLayout</string>
+
+    <string name="info_default">default text</string>
+    <string name="info_error">error text</string>
+    <string name="info_warning">warning text</string>
+    <string name="info_success">success text</string>
 </resources>

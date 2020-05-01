@@ -31,6 +31,7 @@ data class AttributeData(
     var textMaxLength: Int = -1,
 
     var infoFontFamily: Int = -1,
+    var isLineColorWithInfo:Boolean = false,
 
     var defaultText: String = "",
     var defaultIcon: Int = -1,
@@ -118,18 +119,25 @@ data class AttributeData(
                     -1
                 )
 
-            /*defaultText = attributes.getString(R.styleable.CustomTextInputlayout_cti_default_text)?:""
+            infoFontFamily =
+                attributes.getInteger(
+                    R.styleable.CustomTextInputlayout_cti_info_font_family,
+                    -1
+                )
+
+            isLineColorWithInfo =
+                attributes.getBoolean(
+                    R.styleable.CustomTextInputlayout_cti_line_color_with_info,
+                    false
+                )
+
+            defaultText = attributes.getString(R.styleable.CustomTextInputlayout_cti_default_text)?:""
             defaultIcon = attributes.getResourceId(
                 R.styleable.CustomTextInputlayout_cti_default_icon,
                 -1
             )
             defaultColor =
                 attributes.getInteger(R.styleable.CustomTextInputlayout_cti_default_color, -1)
-            defaultFontFamily =
-                attributes.getInteger(
-                    R.styleable.CustomTextInputlayout_cti_default_family,
-                    -1
-                )*/
 
             errorText = attributes.getString(R.styleable.CustomTextInputlayout_cti_error_text)?:""
             errorIcon = attributes.getResourceId(
@@ -154,11 +162,6 @@ data class AttributeData(
             )
             successColor =
                 attributes.getInteger(R.styleable.CustomTextInputlayout_cti_success_color, -1)
-            infoFontFamily =
-                attributes.getInteger(
-                    R.styleable.CustomTextInputlayout_cti_info_font_family,
-                    -1
-                )
 
             hasCounter =
                 attributes.getBoolean(

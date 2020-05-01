@@ -24,6 +24,7 @@
         <attr name="cti_text_max_length" format="integer" />
 
         <attr name="cti_info_font_family" format="string" />
+        <attr name="cti_line_color_with_info" format="string" />
 
         <attr name="cti_default_text" format="string" />
         <attr name="cti_default_icon" format="reference" />

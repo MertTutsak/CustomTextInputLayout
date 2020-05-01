@@ -14,8 +14,20 @@
         app:cti_text_max_length="10"
         app:cti_startIcon="@drawable/ic_warning"
         app:cti_endIcon="@drawable/ic_info"
-        app:cti_bottomLine_color="@color/colorPrimary"
         app:cti_counter="true"
+
+        app:cti_default_text="@string/info_default"
+        app:cti_default_color="@color/colorDefault"
+
+        app:cti_error_text="@string/info_error"
+        app:cti_error_color="@color/colorError"
+
+        app:cti_warning_text="@string/info_warning"
+        app:cti_warning_color="@color/colorWarning"
+
+        app:cti_success_text="@string/info_success"
+        app:cti_success_color="@color/colorSuccess"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
