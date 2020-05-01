@@ -192,4 +192,8 @@ class CustomTextInputlayout : LinearLayout {
         this.edtInput.setText("")
     }
 
+    fun getText():String = this.edtInput.text.toString()
+
+    fun getHint():String = this.txtTitle.text.toString()
+
 }
