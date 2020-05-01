@@ -41,7 +41,7 @@ data class AttributeData(
 
             endIcon =
                 attributes.getResourceId(
-                    R.styleable.CustomTextInputlayout_cti_startIcon,
+                    R.styleable.CustomTextInputlayout_cti_endIcon,
                     -1
                 )
 

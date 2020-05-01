@@ -35,13 +35,14 @@
             android:id="@+id/startIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
             android:layout_gravity="center_vertical"
+            android:layout_marginEnd="4dp"
             android:visibility="gone" />
 
         <EditText
             android:id="@+id/edtInput"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginBottom="2dp"
@@ -49,11 +50,11 @@
 
         <ImageView
             android:id="@+id/endIcon"
-            android:layout_marginStart="4dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:visibility="gone" />
+            android:layout_marginStart="4dp"
+            android:visibility="gone"/>
 
     </LinearLayout>
 

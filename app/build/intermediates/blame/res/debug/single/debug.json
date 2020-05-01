@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/Users/admin/Documents/AndroidProjects/Tutorials/CustomTextInputLayout/app/build/intermediates/res/merged/debug/drawable_ic_info.xml.flat",
+        "source": "/Users/admin/Documents/AndroidProjects/Tutorials/CustomTextInputLayout/app/src/main/res/drawable/ic_info.xml"
+    },
+    {
         "merged": "/Users/admin/Documents/AndroidProjects/Tutorials/CustomTextInputLayout/app/build/intermediates/res/merged/debug/mipmap-anydpi-v26_ic_launcher.xml.flat",
         "source": "/Users/admin/Documents/AndroidProjects/Tutorials/CustomTextInputLayout/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
     },
@@ -54,6 +58,10 @@
     {
         "merged": "/Users/admin/Documents/AndroidProjects/Tutorials/CustomTextInputLayout/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
         "source": "/Users/admin/Documents/AndroidProjects/Tutorials/CustomTextInputLayout/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/admin/Documents/AndroidProjects/Tutorials/CustomTextInputLayout/app/build/intermediates/res/merged/debug/drawable_ic_check.xml.flat",
+        "source": "/Users/admin/Documents/AndroidProjects/Tutorials/CustomTextInputLayout/app/src/main/res/drawable/ic_check.xml"
     },
     {
         "merged": "/Users/admin/Documents/AndroidProjects/Tutorials/CustomTextInputLayout/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher_round.png.flat",

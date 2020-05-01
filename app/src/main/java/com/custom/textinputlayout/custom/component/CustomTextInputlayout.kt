@@ -146,16 +146,16 @@ class CustomTextInputlayout : LinearLayout {
         this.startIcon.visible()
     }
 
-    fun setStartIconVisible(isVisible:Boolean){
+    fun setStartIconVisible(isVisible:Boolean,saveSize:Boolean = false){
         this.startIcon.drawable.isNull{
             throw Exception("startIcon must not be empty")
         }
-        this.startIcon.visibleIf(isVisible)
+        this.startIcon.visibleIf(isVisible,saveSize)
     }
 
-    fun setStartIconClickListener(listener:OnClickListener){
+    fun setStartIconClickListener(onClick:(view:View)->Unit){
         this.startIcon.setOnDebouncedClickListener {
-            listener.onClick(it)
+            onClick(it)
         }
     }
 
@@ -164,22 +164,32 @@ class CustomTextInputlayout : LinearLayout {
         this.endIcon.visible()
     }
 
-    fun setEndIconVisible(isVisible:Boolean){
+    fun setEndIconVisible(isVisible:Boolean,saveSize:Boolean = false){
         this.endIcon.drawable.isNull{
             throw Exception("endIcon must not be empty")
         }
-        
-        this.endIcon.visibleIf(isVisible)
+
+        this.endIcon.visibleIf(isVisible,saveSize)
     }
 
-    fun setEndIconClickListener(listener:OnClickListener){
+    fun setEndIconClickListener(onClick:(view:View)->Unit){
         this.endIcon.setOnDebouncedClickListener {
-            listener.onClick(it)
+            onClick(it)
+        }
+    }
+
+    fun onTextChanged(onChanged:(text:String)->Unit){
+        this.edtInput.onTextChanged{ charSequence: CharSequence?, i: Int, i1: Int, i2: Int ->
+            onChanged(charSequence.toString())
         }
     }
 
     fun setCounter(length: Int) {
         txtCounter.text = "$length/${attr.textMaxLength}"
+    }
+
+    fun clear(){
+        this.edtInput.setText("")
     }
 
 }
