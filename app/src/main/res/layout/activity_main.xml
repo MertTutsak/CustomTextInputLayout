@@ -5,12 +5,15 @@
     android:layout_height="wrap_content">
 
     <com.custom.textinputlayout.custom.component.CustomTextInputlayout
-        android:layout_width="match_parent"
+        android:id="@+id/textInputLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         app:cti_hint="Hint"
         app:cti_text="Text"
         app:cti_text_max_length="10"
+        app:cti_startIcon="@drawable/ic_warning"
+        app:cti_endIcon="@drawable/ic_info"
         app:cti_counter="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
