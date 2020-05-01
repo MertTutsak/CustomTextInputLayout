@@ -146,9 +146,36 @@ class CustomTextInputlayout : LinearLayout {
         this.startIcon.visible()
     }
 
+    fun setStartIconVisible(isVisible:Boolean){
+        this.startIcon.drawable.isNull{
+            throw Exception("startIcon must not be empty")
+        }
+        this.startIcon.visibleIf(isVisible)
+    }
+
+    fun setStartIconClickListener(listener:OnClickListener){
+        this.startIcon.setOnDebouncedClickListener {
+            listener.onClick(it)
+        }
+    }
+
     fun setEndIcon(icon:Int){
         this.endIcon.setImageResource(icon)
         this.endIcon.visible()
+    }
+
+    fun setEndIconVisible(isVisible:Boolean){
+        this.endIcon.drawable.isNull{
+            throw Exception("endIcon must not be empty")
+        }
+        
+        this.endIcon.visibleIf(isVisible)
+    }
+
+    fun setEndIconClickListener(listener:OnClickListener){
+        this.endIcon.setOnDebouncedClickListener {
+            listener.onClick(it)
+        }
     }
 
     fun setCounter(length: Int) {
